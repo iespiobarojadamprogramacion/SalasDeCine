@@ -12,7 +12,9 @@ public class Principal {
 
 		System.out.println("Soy Rafael");
 
-    System.out.println("Hola soy Jorge");	
+		System.out.println("Hola soy Jorge");
+    
+    	System.out.println("soy Anthony");
     
 	}
 
