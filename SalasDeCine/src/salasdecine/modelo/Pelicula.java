@@ -27,5 +27,7 @@ public class Pelicula {
 	public int getClasificacionedad() {
 		return clasificacionedad;
 	}
+
+	}
 	
-}
+
