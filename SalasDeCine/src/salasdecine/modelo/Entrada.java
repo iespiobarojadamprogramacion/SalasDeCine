@@ -1,8 +1,8 @@
 package salasdecine.modelo;
 
 public class Entrada {
-	private int indicador;
-	private static int contador=0;
+	private static int indicador=0;
+	private int codigo;
 	private double precio;
 	private int fila;
 	private int columna;
@@ -11,7 +11,8 @@ public class Entrada {
 		this.precio=precio;
 		this.fila=fila;
 		this.columna=columna;
-		contador=++indicador;
+		codigo=++indicador;
+		//CREO QUE ESTA BIEN
 	}
 	public double getPrecio() {
 		return precio;
@@ -36,8 +37,8 @@ public class Entrada {
 		this.columna = columna;
 	}
 
-	public int getIndicador() {
-		return indicador;
+	public int getCodigo() {
+		return codigo;
 	}
 	
 	
