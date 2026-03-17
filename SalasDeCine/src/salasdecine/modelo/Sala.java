@@ -10,9 +10,9 @@ public class Sala {
     private int columnas;
 
 
-    public Sala(int capacidad, int filas, int columnas) {
+    public Sala(int filas, int columnas) {
         this.codigoSala = contador++; 
-        this.capacidad = capacidad;
+        capacidad = filas * columnas;
         this.filas = filas;
         this.columnas = columnas;
     }
