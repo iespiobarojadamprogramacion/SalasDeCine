@@ -1,6 +1,6 @@
 package salasdecine.modelo;
 
 public enum MetodoDePago {
-          TARGETA,
+          TARJETA,
           EFECTIVO
 }
