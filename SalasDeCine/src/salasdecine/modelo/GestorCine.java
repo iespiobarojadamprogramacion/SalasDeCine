@@ -11,7 +11,7 @@ public class GestorCine {
     private List<Funcion> funciones ; 
     private List<Cliente> clientes ;
     private List<Factura> facturas ;
-    
+    private double precio;
 
     public GestorCine() {
     	
@@ -24,7 +24,15 @@ public class GestorCine {
  	
     }
 
-    // --- SALAS ---
+    public double getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}
+
+	// --- SALAS ---
     public void registrarSala(Sala sala) {
         this.salas.add(sala);
     }

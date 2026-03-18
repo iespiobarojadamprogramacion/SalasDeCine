@@ -12,7 +12,7 @@ public class Entrada {
 		this.fila=fila;
 		this.columna=columna;
 		codigo=++indicador;
-		//CREO QUE ESTA BIEN
+		
 	}
 	public double getPrecio() {
 		return precio;
