@@ -53,6 +53,10 @@ public class Funcion {
 		return horarios;
 	}
 
+	public List<Entrada> getEntradas() {
+		return entradas;
+	}
+
 	public void inicializarMapaAsientos() {
 		int filas=sala.getFila();
 		int columnas=sala.getColumna();
