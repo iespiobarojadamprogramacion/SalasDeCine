@@ -23,7 +23,9 @@ public class GestorCine {
     	
  	
     }
-
+    // PRECIO
+    
+    
     public double getPrecio() {
 		return precio;
 	}
@@ -36,8 +38,34 @@ public class GestorCine {
     public void registrarSala(Sala sala) {
         this.salas.add(sala);
     }
+    
 
-    public Sala consultarSala(int codigoSala) {
+    public List<Sala> getSalas() {
+		return salas;
+	}
+
+
+	public List<Pelicula> getPeliculas() {
+		return peliculas;
+	}
+
+
+	public List<Funcion> getFunciones() {
+		return funciones;
+	}
+
+
+	public List<Cliente> getClientes() {
+		return clientes;
+	}
+
+
+	public List<Factura> getFacturas() {
+		return facturas;
+	}
+
+
+	public Sala consultarSala(int codigoSala) {
         for (Sala s : salas) {
             if (s.getCodigoSala() == codigoSala) {
                 return s;
@@ -58,6 +86,11 @@ public class GestorCine {
             }
         }
         return null;
+    }
+    public void mostrarCatalogoPeliculas() {
+    	for (int i=0; i<peliculas.size(); i++) {
+    		System.out.println((i+1)+" "+peliculas.get(i).getTitulo());
+    	}
     }
 
     // --- FUNCIONES ---
