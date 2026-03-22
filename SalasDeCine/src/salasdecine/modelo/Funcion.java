@@ -6,18 +6,20 @@ import java.util.List;
 public class Funcion {
 	private static int indicador=0;
 	private int idFuncion;
-	private String fecha;
-	private String horaProyeccion;
+	private String fechaInicio;
+	private String fechaFin;
+
+	private String [] horarios;
 	private boolean [][] mapaAsientos;
 	private Sala sala;
 	private Pelicula pelicula;
 //	private Entrada [] entradas;//podemos poner array list? quizas sera mas comodo
 	private List<Entrada> entradas;//guardar entradas en arraylist
 	
-	public Funcion (String fecha, String horaProyeccion, Sala sala, Pelicula pelicula) {
+	public Funcion (String fechaInicio, String fechaFin, Sala sala, Pelicula pelicula) {
 		
-		this.fecha=fecha;
-		this.horaProyeccion=horaProyeccion;
+		this.fechaInicio=fechaInicio;
+		this.fechaFin=fechaFin;
 		this.sala=sala;
 		this.pelicula=pelicula;
 		inicializarMapaAsientos();
@@ -25,22 +27,32 @@ public class Funcion {
 		this.entradas=new ArrayList<>();//agrego una lista para cada funcion
 		
 	}
-	public String getFecha() {
-		return fecha;
+	
+	public String getFechaInicio() {
+		return fechaInicio;
 	}
-	public String getHoraProyeccion() {
-		return horaProyeccion;
+
+	public String getFechaFin() {
+		return fechaFin;
 	}
+
 	public int getIdFuncion() {
 		return idFuncion;
 	}
-	public void setFecha(String fecha) {
-		this.fecha=fecha;
+	
+	
+	public void setFechaInicio(String fechaInicio) {
+		this.fechaInicio = fechaInicio;
 	}
-	public void setHoraProyeccion(String horaProyeccion) {
-		this.horaProyeccion=horaProyeccion;
+
+	public void setFechaFin(String fechaFin) {
+		this.fechaFin = fechaFin;
 	}
 	
+	public String[] getHorarios() {
+		return horarios;
+	}
+
 	public void inicializarMapaAsientos() {
 		int filas=sala.getFila();
 		int columnas=sala.getColumna();

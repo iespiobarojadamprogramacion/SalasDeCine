@@ -87,9 +87,16 @@ public class GestorCine {
         }
         return null;
     }
+    //Mostrar el catalogo de Peliculas
     public void mostrarCatalogoPeliculas() {
     	for (int i=0; i<peliculas.size(); i++) {
     		System.out.println((i+1)+" "+peliculas.get(i).getTitulo());
+    	}
+    }
+    // Mostrar el Catalogo De Salas
+    public void mostrarCatalogoSalas() {
+    	for (int i=0; i<salas.size(); i++) {
+    		System.out.println((i+1)+" "+salas.get(i).getNombre());
     	}
     }
 
@@ -131,10 +138,12 @@ public class GestorCine {
 
     // --- VENTAS ---
     public Factura venderEntrada(int idFuncion, int idCliente, int fila, int columna, MetodoDePago metodoPago) {
-    	Funcion f = consultarFuncion(idFuncion);
-    	//verificamos que la funcion sea distinta de null, que esa funcion este disponible el asiento
-    	//si es el caso
-    	if (f!=null && f.consultarDisponibilidadAsientos(fila, columna)==true) {
+    	Funcion funcion = consultarFuncion(idFuncion);
+    	if (funcion ==null) {
+    		System.out.println("Funcion no se encontro o No existe");
+    		return null;
+    	}
+    	if(!funcion.consultarDisponibilidadAsientos(fila, columna))
     		//generamos una entrada, el precio hay que ver como cambiarle el valor, o si le mantenemos
     		//con esa funcion ocupamos el asiento, agregamos la entrada y generamos la factura. 
     		Entrada entrada= new Entrada(10.50, fila, columna);

@@ -2,16 +2,14 @@ package salasdecine.modelo;
 
 public class Sala {
 	
-    private static int contador = 1;
-
-    private int codigoSala;
+	private String nombre;
     private int capacidad;
     private int filas;
     private int columnas;
 
 
-    public Sala(int filas, int columnas) {
-        this.codigoSala = contador++; 
+    public Sala(String nombre,int filas, int columnas) {
+        this.nombre=nombre;
         capacidad = filas * columnas;
         this.filas = filas;
         this.columnas = columnas;
@@ -22,17 +20,27 @@ public class Sala {
         return capacidad;
     }
 
-    public int getCodigoSala() {
-        return codigoSala;
-    }
+    
+
+    public String getNombre() {
+		return nombre;
+	}
 
 
-    public int getFila() {
+	public int getFila() {
         return filas;
     }
 
     public int getColumna() {
         return columnas;
     }
+
+
+	@Override
+	public String toString() {
+		return "Sala [nombre=" + nombre + ", capacidad=" + capacidad + ", filas=" + filas + ", columnas=" + columnas
+				+ "]";
+	}
+    
 
 }
