@@ -23,7 +23,9 @@ public class GestorCine {
     	
  	
     }
-
+    // PRECIO
+    
+    
     public double getPrecio() {
 		return precio;
 	}
@@ -36,10 +38,36 @@ public class GestorCine {
     public void registrarSala(Sala sala) {
         this.salas.add(sala);
     }
+    
 
-    public Sala consultarSala(int codigoSala) {
+    public List<Sala> getSalas() {
+		return salas;
+	}
+
+
+	public List<Pelicula> getPeliculas() {
+		return peliculas;
+	}
+
+
+	public List<Funcion> getFunciones() {
+		return funciones;
+	}
+
+
+	public List<Cliente> getClientes() {
+		return clientes;
+	}
+
+
+	public List<Factura> getFacturas() {
+		return facturas;
+	}
+
+
+	public Sala consultarSala(String Nombresala) {
         for (Sala s : salas) {
-            if (s.getCodigoSala() == codigoSala) {
+            if (s.getNombre().equalsIgnoreCase(Nombresala)) {
                 return s;
             }
         }
@@ -59,17 +87,38 @@ public class GestorCine {
         }
         return null;
     }
+    //Mostrar el catalogo de Peliculas
+    public void mostrarCatalogoPeliculas() {
+    	for (int i=0; i<peliculas.size(); i++) {
+    		System.out.println((i+1)+" "+peliculas.get(i).getTitulo());
+    	}
+    }
+    // Mostrar el Catalogo De Salas
+    public void mostrarCatalogoSalas() {
+    	for (int i=0; i<salas.size(); i++) {
+    		System.out.println((i+1)+" "+salas.get(i).getNombre());
+    	}
+    }
 
     // --- FUNCIONES ---
     public void registrarFuncion(Funcion funcion) {
         this.funciones.add(funcion);
     }
+    public void mostrarCatalogoFunciones() {
+    	for (int i=0; i<funciones.size();i++) {
+    		System.out.println("----------------------------------------------------");
+    		System.out.println(funciones.get(i).getIdFuncion()); //System.out.println((i+1)+ " "+funciones.get(i).getIdFuncion());
+    		System.out.println("\t"+funciones.get(i).getSala().getNombre());
+    		System.out.println("\t"+funciones.get(i).getPelicula().getTitulo());
+    		System.out.println("----------------------------------------------------");
+    	}
+    }
 
     public void modificarFuncion(int idFuncion, String nuevaFecha, String nuevaHora) {
         Funcion f = consultarFuncion(idFuncion);
         if (f != null) {
-            f.setFecha(nuevaFecha);
-            f.setHoraProyeccion(nuevaHora);
+            f.setFechaInicio(nuevaFecha);
+            f.setFechaFin(nuevaHora);
         }
     }
 
@@ -97,50 +146,53 @@ public class GestorCine {
     }
 
     // --- VENTAS ---
-    public Factura venderEntrada(int idFuncion, int idCliente, int fila, int columna, MetodoDePago metodoPago) {
-    	Funcion f = consultarFuncion(idFuncion);
-    	//verificamos que la funcion sea distinta de null, que esa funcion este disponible el asiento
-    	//si es el caso
-    	if (f!=null && f.consultarDisponibilidadAsientos(fila, columna)==true) {
-    		//generamos una entrada, el precio hay que ver como cambiarle el valor, o si le mantenemos
-    		//con esa funcion ocupamos el asiento, agregamos la entrada y generamos la factura. 
-    		Entrada entrada= new Entrada(10.50, fila, columna);
-    		f.ocuparAsientoSala(fila, columna);
-    		f.agregarEntrada(entrada);
-    		//LA FECHA hay que ir cambiandola dia a dia.
-    		Factura nuevaFactura= new Factura("Fecha Actual", entrada.getPrecio(), metodoPago);
-    		facturas.add(nuevaFactura);//añadimos la factura al ArrayList de facturas
-    		return nuevaFactura;
-    		
+    public Factura venderEntrada(int idFuncion, int idCliente, int fila, int columna,String hora, MetodoDePago metodoPago) {
+    	Funcion funcion = consultarFuncion(idFuncion);
+    	if (funcion ==null) {
+    		System.out.println("Funcion no se encontro o No existe");
+    		return null;
+    		}
+    	if(!funcion.horarioValido(hora)) {
+    		return null;
+    		}
+    	if(!funcion.asientoValido(fila, columna)) {
+    		return null;
     	}
-    	return null;
-    	/*if (consultarDisponibilidad(idFuncion, fila, columna)) {
-            
-            
-            f.ocuparAsientoSala(fila, columna); // Marcamos el asiento como ocupado
-            
-            // Creamos la factura usando el constructor corregido
-            Factura nuevaFactura = new Factura("Fecha Actual", 10.50, metodoPago); 
-            this.facturas.add(nuevaFactura);
-            return nuevaFactura;
-        }
-        return null; // Si no hay disponibilidad, no se vende*/
+    	//comprobar disponibilidad
+    	if(!funcion.consultarDisponibilidad(fila, columna, hora)) {
+    		return null;
+    		}
+    		Entrada entrada = new Entrada (10.50, fila, columna, hora);
+
+    		funcion.agregarEntrada(entrada);
+
+    		Factura factura = new Factura("FECHA ACTUAL", entrada.getPrecio(), metodoPago);
+    	
+    
+    		facturas.add(factura);
+    	
+    		return factura;
     }
+    	
+
+    	
+    	
+    	
 
     public boolean cancelarEntrada(int idEntrada) {
-        // Aquí iría la lógica para buscar la entrada, liberar el asiento en la Función y anularla
+        
         
     	return true; 
     }
 
-    public boolean consultarDisponibilidad(int idFuncion, int fila, int columna) {
-        Funcion f = consultarFuncion(idFuncion);
-        if (f != null) {
-            return f.consultarDisponibilidadAsientos(fila, columna);
+   public boolean consultarDisponibilidad(int idFuncion, int fila, int columna,String hora) {
+	   Funcion fun= consultarFuncion(idFuncion);
+        if (fun != null) {
+            return fun.consultarDisponibilidad(fila, columna,hora);
         }
         return false;
     }
-
+    
     public Factura[] consultarVentas() {
         return facturas.toArray(new Factura[0]);
     }

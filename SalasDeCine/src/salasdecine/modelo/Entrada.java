@@ -6,14 +6,29 @@ public class Entrada {
 	private double precio;
 	private int fila;
 	private int columna;
+	private String hora;
 	
-	public Entrada(double precio, int fila, int columna) {
+	public Entrada(double precio, int fila, int columna,String hora) {
 		this.precio=precio;
 		this.fila=fila;
 		this.columna=columna;
+		this.hora=hora;
 		codigo=++indicador;
 		
 	}
+	
+	
+
+	public String getHora() {
+		return hora;
+	}
+
+
+
+	public void setHora(String hora) {
+		this.hora = hora;
+	}
+
 	public double getPrecio() {
 		return precio;
 	}
