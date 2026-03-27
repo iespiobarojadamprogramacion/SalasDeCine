@@ -3,6 +3,7 @@ package salasdecine.modelo;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+
 public class Principal {
 
 	public static void main(String[] args) {
@@ -66,8 +67,7 @@ public class Principal {
 				genero = sc.nextLine();
 				System.out.println("Dame la clasificacion de edad: \n ");
 				clasificacionEdad = comprobarClasificacionEdad(sc);
-				Pelicula pelicula = new Pelicula(tituloPelicula, duracion, genero,
-						ClasificacionEdad.valueOf(clasificacionEdad));
+				Pelicula pelicula = new Pelicula(tituloPelicula, duracion, genero, ClasificacionEdad.valueOf(clasificacionEdad));
 				System.out.println("---------PELICULA REGISTRADA: ");
 				System.out.println(pelicula);
 				CineTresAguas.registrarPelicula(pelicula);
