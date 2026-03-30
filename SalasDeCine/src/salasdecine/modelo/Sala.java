@@ -1,7 +1,6 @@
 package salasdecine.modelo;
 
 public class Sala {
-	
 	private String nombre;
     private int capacidad;
     private int filas;
@@ -35,11 +34,9 @@ public class Sala {
         return columnas;
     }
 
-
 	@Override
 	public String toString() {
-		return "Sala [nombre=" + nombre + ", capacidad=" + capacidad + ", filas=" + filas + ", columnas=" + columnas
-				+ "]";
+		return "nombre: " + nombre + ", capacidad: " + capacidad + ", filas: " + filas + ", columnas: " + columnas;
 	}
     
 

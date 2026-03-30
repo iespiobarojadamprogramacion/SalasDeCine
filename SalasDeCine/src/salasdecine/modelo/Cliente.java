@@ -6,17 +6,16 @@ public class Cliente {
 	private String Nombre;
 	private String Email;
 	private String fecha_nacimiento;
+	
+	public Cliente () {
+		
+	}
+	
 	public Cliente(String nombre, String email, String fecha_nacimiento) {
 		this.id_Cliente=++contador;
 		Nombre = nombre;
 		Email = email;
 		this.fecha_nacimiento = fecha_nacimiento;
-	}
-	public static int getContador() {
-		return contador;
-	}
-	public static void setContador(int contador) {
-		Cliente.contador = contador;
 	}
 	public int getId_Cliente() {
 		return id_Cliente;
@@ -41,6 +40,12 @@ public class Cliente {
 	}
 	public void setFecha_nacimiento(String fecha_nacimiento) {
 		this.fecha_nacimiento = fecha_nacimiento;
+	}
+	public String toString() {
+		return "Cliente id: "+id_Cliente+
+				"\nNombre: "+Nombre+
+				"\nEmail: "+Email+
+				"\nFecha Nacimiento: "+fecha_nacimiento + "\n";
 	}
 	
 }
