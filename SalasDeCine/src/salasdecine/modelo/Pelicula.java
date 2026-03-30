@@ -1,7 +1,9 @@
 package salasdecine.modelo;
 
 
+
 public class Pelicula {
+	
 	private String titulo;
 	private int duracion;
 	private String genero;
@@ -22,7 +24,7 @@ public class Pelicula {
 		return titulo;
 	}
 
-	public double getDuracion() {
+	public int getDuracion() {
 		return duracion;
 	}
 
@@ -40,5 +42,5 @@ public class Pelicula {
 				+ "\nclasificacion Edad: " + clasificacionEdad + "\n";
 	}
 
-
+	
 }
