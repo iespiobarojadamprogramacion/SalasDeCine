@@ -38,7 +38,7 @@ public class Pelicula {
 
 	@Override
 	public String toString() {
-		return "-Pelicula-\n" + "titulo: " + getTitulo() + "\nduracion: " + duracion + "\ngenero: " + genero
+		return "\n-Pelicula-" + "\ntitulo: " + getTitulo() + "\nduracion: " + duracion + "\ngenero: " + genero
 				+ "\nclasificacion Edad: " + clasificacionEdad + "\n";
 	}
 
