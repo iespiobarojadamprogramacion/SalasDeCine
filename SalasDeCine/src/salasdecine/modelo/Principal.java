@@ -9,7 +9,7 @@ public class Principal {
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
-		sc.useDelimiter("\n");
+
 
 		// variables para peliculas
 		String tituloPelicula;
@@ -323,15 +323,26 @@ public class Principal {
 						opcionFuncionElegida = sc.nextInt();
 						//convertimos la hora en menu numerico para evitar errores
 						System.out.println("Elige Hora \n1 - 16:00 \n2 - 19:00 \n3 - 22:00");
-						int opcionHora = sc.nextInt();
-						if (opcionHora < 1 || opcionHora > 3) {
-						    System.out.println("Opción incorrecta de la hora");
-						    return;
+						String hora="";
+						String opcionHora = sc.next();
+						if(opcionHora.equals("16:00")) {
+							hora="16:00";
+						}else if(opcionHora.equals("19:00")) {
+							hora="19:00";
+						}else if(opcionHora.equals("22:00")) {
+							hora="22:00";
+						}else {
+							if(opcionHora.equals("1") || opcionHora.equals("2")|| opcionHora.equals("3")) {
+								 hora = (opcionHora == "1") ? "16:00" :
+						              (opcionHora == "2") ? "19:00" :
+						            	  (opcionHora =="3")?"22:00":"error" ;
+							}
 						}
+						    
+						
 					
 						
-						String hora = (opcionHora == 1) ? "16:00" :
-						              (opcionHora == 2) ? "19:00" : "22:00";  
+						 
 						//mostrare los asientos para que eliga que fila y columna quieren
 						//posible mejora con un if para evitar crasheos
 						Funcion fu = CineTresAguas.getFunciones().get(opcionFuncionElegida - 1);
