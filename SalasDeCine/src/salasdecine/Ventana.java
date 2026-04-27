@@ -1,11 +1,18 @@
 package salasdecine;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-public class Ventana extends JFrame {
+import salasdecine.vistas.DatosClienteVista;
+import salasdecine.vistas.ListaClienteVista;
+import salasdecine.vistas.RegistrarClienteVista;
+
+public class Ventana extends JFrame implements ActionListener{
 	//VARIABLES PARA ITEM DEL JMENU
 	private JMenuItem gestionPeliculaAltaPeliJMenuItem;
 	
@@ -68,43 +75,89 @@ public class Ventana extends JFrame {
 		menuBar.add(cineJMenuEntrada);
 		
 		//DECLARAMOS LOS JMenuItem PARA CADA OPCIONES QUE TIENE EL JMenu
-		//LAS VARIABLES ESTAN ARRIBA Y AQUI LA INSTANCIAMOS
-		gestionPeliculaAltaPeliJMenuItem= new JMenuItem("Dar de alta pelicula");
-		cineJMenuPelicula.add(gestionPeliculaAltaPeliJMenuItem);
-		gestionSalaMostrarSalasJMenuItem= new JMenuItem ("Mostrar todas las salas");
-		cineJMenuSala.add(gestionSalaMostrarSalasJMenuItem);
-		gestionSalaSalasLibresJMenuItem= new JMenuItem("Salas Libres");
-		cineJMenuSala.add(gestionSalaSalasLibresJMenuItem);
-		gestionSalaMostrarSalasOcupadasJMenuItem= new JMenuItem("Mostrar salas ocupadas");
-		cineJMenuSala.add(gestionSalaMostrarSalasOcupadasJMenuItem);
-		
-		gestionFuncionDarAltaJMenuItem = new JMenuItem("Dar de alta funcion");
-		cineJMenuFuncion.add(gestionFuncionDarAltaJMenuItem);
-		gestionFuncionConsultarDispFuncion = new JMenuItem("Consultar disponibilidad de la funcion");
-		cineJMenuFuncion.add(gestionFuncionConsultarDispFuncion);
-		gestionFuncionAgregarEntradaFuncion = new JMenuItem("Agregar Entrada a una funcion");
-		cineJMenuFuncion.add(gestionFuncionAgregarEntradaFuncion);
-		gestionFuncionMostrarAsientos = new JMenuItem("Mostrar Asientos");
-		cineJMenuFuncion.add(gestionFuncionMostrarAsientos);
-		
-		gestionClienteRegistrarClienteJMenuItem = new JMenuItem("Registrar cliente");
-		cineJMenuCliente.add(gestionClienteRegistrarClienteJMenuItem);
-		gestionClienteDatosClienteJMenuItem = new JMenuItem("Ver datos cliente");
-		cineJMenuCliente.add(gestionClienteDatosClienteJMenuItem);
-		gestionClienteListaClienteJMenuItem = new JMenuItem("Ver lista clientes");
-		cineJMenuCliente.add(gestionClienteListaClienteJMenuItem);
-		
-		gestionEntradaVenderEntradaJMenuItem = new JMenuItem ("Vender entrada");
-		cineJMenuEntrada.add(gestionEntradaVenderEntradaJMenuItem);
-		gestionEntradaMostrarEntradasFuncionJMenuItem = new JMenuItem("Mostrar entradas funcion");
-		cineJMenuEntrada.add(gestionEntradaMostrarEntradasFuncionJMenuItem);
-		gestionEntradaCancelarEntradaJMenuItem = new JMenuItem ("Cancelar Entradas");
-		cineJMenuEntrada.add(gestionEntradaCancelarEntradaJMenuItem);
-		gestionEntradaConsultarEntradaClienteJMenuItem = new JMenuItem ("Consultar entrada cliente");
-		cineJMenuEntrada.add(gestionEntradaConsultarEntradaClienteJMenuItem);
-		gestionEntradaCancelarMiEntradaJMenuItem = new JMenuItem("Cancelar mi entrada");
-		cineJMenuEntrada.add(gestionEntradaCancelarMiEntradaJMenuItem);
+				//LAS VARIABLES ESTAN ARRIBA Y AQUI LA INSTANCIAMOS
+				gestionPeliculaAltaPeliJMenuItem= new JMenuItem("Dar de alta pelicula");
+				cineJMenuPelicula.add(gestionPeliculaAltaPeliJMenuItem);
+				
+				//OPCIONES DEL MENU DE SALA
+				gestionSalaMostrarSalasJMenuItem= new JMenuItem ("Mostrar todas las salas");
+				cineJMenuSala.add(gestionSalaMostrarSalasJMenuItem);
+				gestionSalaMostrarSalasJMenuItem.addActionListener(this); //recoge el evento este, ESTA ASOCIADO A CUANDO SE PULSA TENGA ESE EVENTO
+				
+				gestionSalaSalasLibresJMenuItem= new JMenuItem("Salas Libres");
+				cineJMenuSala.add(gestionSalaSalasLibresJMenuItem);
+				gestionSalaSalasLibresJMenuItem.addActionListener(this); //EVENTO
+				
+				gestionSalaMostrarSalasOcupadasJMenuItem= new JMenuItem("Mostrar salas ocupadas");
+				cineJMenuSala.add(gestionSalaMostrarSalasOcupadasJMenuItem);
+				gestionSalaMostrarSalasOcupadasJMenuItem.addActionListener(this);//EVENTO
+				
+				//OPCIONES DEL MENU DE FUNCION
+				gestionFuncionDarAltaJMenuItem = new JMenuItem("Dar de alta funcion");
+				cineJMenuFuncion.add(gestionFuncionDarAltaJMenuItem);
+				gestionFuncionConsultarDispFuncion = new JMenuItem("Consultar disponibilidad de la funcion");
+				cineJMenuFuncion.add(gestionFuncionConsultarDispFuncion);
+				gestionFuncionAgregarEntradaFuncion = new JMenuItem("Agregar Entrada a una funcion");
+				cineJMenuFuncion.add(gestionFuncionAgregarEntradaFuncion);
+				gestionFuncionMostrarAsientos = new JMenuItem("Mostrar Asientos");
+				cineJMenuFuncion.add(gestionFuncionMostrarAsientos);
+				
+				//OPCIONES DEL MENU DE CLIENTE
+				gestionClienteRegistrarClienteJMenuItem = new JMenuItem("Registrar cliente");
+				cineJMenuCliente.add(gestionClienteRegistrarClienteJMenuItem);
+				gestionClienteRegistrarClienteJMenuItem.addActionListener(this);
+				
+				gestionClienteDatosClienteJMenuItem = new JMenuItem("Ver datos cliente");
+				cineJMenuCliente.add(gestionClienteDatosClienteJMenuItem);
+				gestionClienteDatosClienteJMenuItem.addActionListener(this);
+				
+				gestionClienteListaClienteJMenuItem = new JMenuItem("Ver lista clientes");
+				cineJMenuCliente.add(gestionClienteListaClienteJMenuItem);
+				gestionClienteListaClienteJMenuItem.addActionListener(this);
+				
+				//OPCIONES DEL MENU DE ENTRADA
+				gestionEntradaVenderEntradaJMenuItem = new JMenuItem ("Vender entrada");
+				cineJMenuEntrada.add(gestionEntradaVenderEntradaJMenuItem);
+				gestionEntradaMostrarEntradasFuncionJMenuItem = new JMenuItem("Mostrar entradas funcion");
+				cineJMenuEntrada.add(gestionEntradaMostrarEntradasFuncionJMenuItem);
+				gestionEntradaCancelarEntradaJMenuItem = new JMenuItem ("Cancelar Entradas");
+				cineJMenuEntrada.add(gestionEntradaCancelarEntradaJMenuItem);
+				gestionEntradaConsultarEntradaClienteJMenuItem = new JMenuItem ("Consultar entrada cliente");
+				cineJMenuEntrada.add(gestionEntradaConsultarEntradaClienteJMenuItem);
+				gestionEntradaCancelarMiEntradaJMenuItem = new JMenuItem("Cancelar mi entrada");
+				cineJMenuEntrada.add(gestionEntradaCancelarMiEntradaJMenuItem);
 			
+	}
+
+
+	//METODO QUE SE AGREGA AL IMPLEMENTAR ACTIONLISTENER, RECOGERA LOS ELEMENTOS DE MI PAGINA
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+				//SOLO NO HARIA NADA, YA QUE TIENES QUE DECIR QUE ELEMENTO DE LA VENTANA HACE ESTE EVENTO
+				System.out.println("RECOGIENDO EVENTOS");
+				
+				if (e.getSource()==gestionSalaMostrarSalasJMenuItem) {
+					System.out.println("HAS ELEGIDO MOSTRAR SALAS");
+				}else if(e.getSource()==gestionSalaSalasLibresJMenuItem) {
+					System.out.println("HAS ELEGIDO SALAS LIBRES");
+				}else if(e.getSource()==gestionSalaMostrarSalasOcupadasJMenuItem) {
+					System.out.println("HAS ELEGIDO MOSTRAR SALAS OCUPADAS");
+				}else if(e.getSource()==gestionClienteRegistrarClienteJMenuItem) {
+					System.out.println("HAS ELEGIDO REGISTRAR CLIENTE");
+					RegistrarClienteVista registrarClienteVista = new RegistrarClienteVista();
+					setContentPane(registrarClienteVista); //ASOCIO ESA CLASE AL EVENTO DE LAS OPCIONES DEL MENU
+				}else if(e.getSource()==gestionClienteDatosClienteJMenuItem) {
+					System.out.println("HAS ELEGIDO VER DATOS CLIENTE");
+					DatosClienteVista datosClienteVista = new DatosClienteVista ();
+					setContentPane(datosClienteVista);
+				}else if(e.getSource()==gestionClienteListaClienteJMenuItem) {
+					System.out.println("HAS ELEGIDO VER LISTA DE CLIENTES");
+					ListaClienteVista listaClienteVista = new ListaClienteVista();
+					setContentPane(listaClienteVista);
+				}
+				setVisible(true); //para refrescar
+		
 	}
 
 }
