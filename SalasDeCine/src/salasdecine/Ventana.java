@@ -8,6 +8,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import salasdecine.vistas.DarAltaPeliculaVista;
 import salasdecine.vistas.DatosClienteVista;
 import salasdecine.vistas.ListaClienteVista;
 import salasdecine.vistas.RegistrarClienteVista;
@@ -78,7 +79,7 @@ public class Ventana extends JFrame implements ActionListener{
 				//LAS VARIABLES ESTAN ARRIBA Y AQUI LA INSTANCIAMOS
 				gestionPeliculaAltaPeliJMenuItem= new JMenuItem("Dar de alta pelicula");
 				cineJMenuPelicula.add(gestionPeliculaAltaPeliJMenuItem);
-				
+				gestionPeliculaAltaPeliJMenuItem.addActionListener(this);
 				//OPCIONES DEL MENU DE SALA
 				gestionSalaMostrarSalasJMenuItem= new JMenuItem ("Mostrar todas las salas");
 				cineJMenuSala.add(gestionSalaMostrarSalasJMenuItem);
@@ -155,6 +156,10 @@ public class Ventana extends JFrame implements ActionListener{
 					System.out.println("HAS ELEGIDO VER LISTA DE CLIENTES");
 					ListaClienteVista listaClienteVista = new ListaClienteVista();
 					setContentPane(listaClienteVista);
+				}else if(e.getSource()==gestionPeliculaAltaPeliJMenuItem) {
+					System.out.println("HAS ELEGIDO ALTA PELICULA");
+					DarAltaPeliculaVista darAltaPeliculaVista= new DarAltaPeliculaVista();
+					setContentPane(darAltaPeliculaVista);
 				}
 				setVisible(true); //para refrescar
 		
