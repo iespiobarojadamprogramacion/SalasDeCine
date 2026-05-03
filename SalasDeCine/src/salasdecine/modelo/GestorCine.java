@@ -68,7 +68,13 @@ public class GestorCine {
 	}
 
 	// --- PELICULAS ---
-	public void registrarPelicula(Pelicula pelicula) {
+	/*public void registrarPelicula(Pelicula pelicula) {
+		this.peliculas.add(pelicula);
+	}*/
+	
+	//METODO registrarPelicula QUE USARE PARA LA INTERFAZ
+	public void registrarPelicula(String titulo, int duracion, String genero, ClasificacionEdad clasificacionEdad) {
+		Pelicula pelicula = new Pelicula(titulo, duracion, genero, clasificacionEdad);
 		this.peliculas.add(pelicula);
 	}
 
@@ -141,9 +147,20 @@ public class GestorCine {
 	}
 
 	// --- CLIENTES ---
-	public void registrarCliente(Cliente cliente) {
+	public void registroCliente(String nombre, String email, String fechaNacimiento) {
+		Cliente cliente = new Cliente(nombre, email, fechaNacimiento);
 		this.clientes.add(cliente);
-	}
+		System.out.println(cliente);
+		System.out.println();
+		//System.out.println(cliente.getId_Cliente());
+	} //HASTA AQUI
+
+	
+	/*public void registrarCliente(Cliente cliente) {
+		this.clientes.add(cliente);
+	}*/ //<--- YA NO SE USA, LO USABAMOS PARA DECLARAR DIRECTAMENTE EL CLIENTE EN PRINCIPAL, 
+	//PERO CREE UN METODO AQUI ARRIBA PARA REGISTRAR EL CLIENTE CON LOS PARAMETROS DARLE DE ALTA COMO CLIENTE Y AÑADIRLO
+	//AHORA EL PRINCIPAL YA NO LO HACE SOLO LLAMA AL METODO REGISTROCLIENTE 
 	
 	//consulto un cliente con id cliente, y me regresa ese cliente
 	public Cliente consultarCliente(int idCliente) {
@@ -153,6 +170,18 @@ public class GestorCine {
 			}
 		}
 		return null;
+	}
+	//METODO PARA INTERFACEGRAFICA, DESPUES DE IMPLEMENTARLO ME DI CUENTA QUE EL METODO DE ARRIBA PODIA HABERLO USADO
+	//PARA ESTO, YA QUE DIRECTAMENTE ME DEVOLVIA EL CLIENTE Y DE AHI ESOS VALORES LOS GUARDABA EN UN STRING [][]
+	public ArrayList <Cliente> clienteSoloArray(int idCliente){
+		ArrayList<Cliente> cliente= new ArrayList<Cliente>();
+		for(int i=0; i<clientes.size();i++) {
+			if(clientes.get(i).getId_Cliente()==idCliente) {
+				cliente.add(clientes.get(i));
+			}
+		}
+		return cliente;
+		
 	}
 
 	// recorro la lista de clientes para mostrarla

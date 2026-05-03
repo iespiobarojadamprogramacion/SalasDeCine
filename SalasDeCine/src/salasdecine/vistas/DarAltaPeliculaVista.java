@@ -125,4 +125,7 @@ public class DarAltaPeliculaVista extends JPanel{
 	public void setError(String mensaje) {
 		JOptionPane.showMessageDialog(JOptionPane.getFrameForComponent(this), mensaje);
 	}
+	public void respuestaOK(String mensaje) {
+		JOptionPane.showMessageDialog(JOptionPane.getFrameForComponent(this), mensaje);
+	}
 }
