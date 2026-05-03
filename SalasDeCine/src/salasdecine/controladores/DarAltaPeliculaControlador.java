@@ -3,10 +3,13 @@ package salasdecine.controladores;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import salasdecine.modelo.APICine;
+import salasdecine.modelo.ClasificacionEdad;
 import salasdecine.vistas.DarAltaPeliculaVista;
 
 public class DarAltaPeliculaControlador implements ActionListener {
 	private DarAltaPeliculaVista vista;
+	private APICine api= APICine.getInstance(); //<-- TODOS LOS CONTROLADORES TIENEN QUE TENERLO
 	public DarAltaPeliculaControlador( DarAltaPeliculaVista vista) {
 		this.vista=vista;
 	}
@@ -19,10 +22,12 @@ public class DarAltaPeliculaControlador implements ActionListener {
 		String clasificacion=vista.getClasificacion();
 		try {
 			int duraccion=Integer.parseInt(Duraccion);
-			
 			System.out.println(Titulo+" "+duraccion+" "+genero+" "+clasificacion);
+			api.registrarPelicula(Titulo, duraccion, genero, ClasificacionEdad.valueOf(clasificacion));
+			vista.respuestaOK("¡Pelicula Registrada!");
+			System.out.println();
 		}catch(NumberFormatException enf) {
-			System.out.println("no has introducido un numero valido");
+			System.out.println("No has introducido un numero valido");
 			vista.setError("Has introducido valor no numerico");
 		}
 		

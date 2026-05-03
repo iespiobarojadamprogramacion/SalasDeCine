@@ -45,13 +45,13 @@ public class Principal {
 
 		// GUARDO EN UN ARRAY DE STRING LOS NOMBRES QUE IRE USANDO PARA LAS SALAS
 		String menu = "1 GESTION PELICULA\n" + "2 GESTION SALA\n" + "3 GESTION FUNCION\n"
-				+ "4 GESTION CLIENTE\n 5 GESTION ENTRADAS\n";
+				+ "4 GESTION CLIENTE\n5 GESTION ENTRADAS\n";
 		String submenuFuncion = "1-DAR DE ALTA FUNCION\n" + "2-CONSULTAR DISPONIBILIDAD DE LA FUNCION\n"
 				+ "3-AGREGAR ENTRADA A UNA FUNCION\n" + "4-MOSTRAR ASIENTOS\n" + "-1 VOLVER";
 
 		String menuSala = "1 MOSTRAR TODAS LAS SALAS \n2 SALAS LIBRES\n3 MOSTRAR SALAS OCUPADAS\n-1 ATRAS\n";
 		String menuCliente = "1 REGISTRAR CLIENTE \n2 VER DATOS CLIENTE \n3 VER LISTA CLIENTES \n-1 ATRAS";
-		String menuEntradas = "1 VENDER ENTRADA\n 2 MOSTRAR ENTRADAS FUNCION\n 3 CANCELAR ENTRADAS\n 4 CONSULTAR ENTRADA CLIENTE\n 5 CANCELAR MI ENTRADA\n -1 ATRAS";
+		String menuEntradas = "1 VENDER ENTRADA\n2 MOSTRAR ENTRADAS FUNCION\n3 CANCELAR ENTRADAS\n4 CONSULTAR ENTRADA CLIENTE\n5 CANCELAR MI ENTRADA\n-1 ATRAS";
 
 		int opcion;
 
@@ -76,11 +76,11 @@ public class Principal {
 				genero = sc.nextLine().toUpperCase();
 				System.out.println("Dame la clasificacion de edad: \n ");
 				clasificacionEdad = CineTresAguas.comprobarClasificacionEdad(sc);
-				Pelicula pelicula = new Pelicula(tituloPelicula, duracion, genero,
+				/*Pelicula pelicula = new Pelicula(tituloPelicula, duracion, genero,
+						ClasificacionEdad.valueOf(clasificacionEdad));*/
+				System.out.println("¡PELICULA REGISTRADA! ");
+				CineTresAguas.registrarPelicula(tituloPelicula, duracion, genero,
 						ClasificacionEdad.valueOf(clasificacionEdad));
-				System.out.println("---------PELICULA REGISTRADA: ");
-				System.out.println(pelicula);
-				CineTresAguas.registrarPelicula(pelicula);
 				break;
 				
 			//OPCION MENU PRINCIPAL GESTION SALA
@@ -284,10 +284,12 @@ public class Principal {
 						email = sc.nextLine();
 						System.out.println("Dame la fecha de nacimiento del cliente");
 						fechaNacimiento = sc.nextLine();
-						Cliente cliente = new Cliente(nombre, email, fechaNacimiento);
-						CineTresAguas.registrarCliente(cliente);
+						CineTresAguas.registroCliente(nombre, email, fechaNacimiento); 
+						//LO EDITE POR EL MOTIVO DE LA INTERFAZ
+						//Cliente cliente = new Cliente(nombre, email, fechaNacimiento);
+						//CineTresAguas.registrarCliente(cliente);
 						System.out.println("¡Cliente registrado!");
-						System.out.println(cliente);
+						//System.out.println(cliente);
 						break;
 					case 2:
 
@@ -367,8 +369,10 @@ public class Principal {
 		                idCliente = sc.nextInt();
 		                //posible mejora cuando muestre los clientes que eliga una opcion correcta, un if para evitar errores
 		                System.out.println("Método de pago [1-Tarjeta, 2-Efectivo]:");
+		                //CORREGIR ESTA PARTE
 		                int metodoPago = sc.nextInt();
 		                MetodoDePago metodo = (metodoPago == 1) ? MetodoDePago.TARJETA : MetodoDePago.EFECTIVO;
+		                //HASTA AQUI, EL ERROR ESTA EN QUE CUANDO VAS A ELEGIR EL METODO DE PAGO SI PONES 1 NO SE ASIGNA
 		                
 		                Factura factura = CineTresAguas.venderEntrada(opcionFuncionElegida, idCliente, fila, columna, hora, metodo);
 		                if (factura != null) {
