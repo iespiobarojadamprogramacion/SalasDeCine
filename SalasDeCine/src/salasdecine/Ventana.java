@@ -11,7 +11,10 @@ import javax.swing.JMenuItem;
 import salasdecine.vistas.DarAltaPeliculaVista;
 import salasdecine.vistas.DatosClienteVista;
 import salasdecine.vistas.ListaClienteVista;
+import salasdecine.vistas.MostrarSalasVista;
 import salasdecine.vistas.RegistrarClienteVista;
+import salasdecine.vistas.SalasLibresVista;
+import salasdecine.vistas.SalasOcupadasVista;
 
 public class Ventana extends JFrame implements ActionListener{
 	//VARIABLES PARA ITEM DEL JMENU
@@ -139,11 +142,17 @@ public class Ventana extends JFrame implements ActionListener{
 				System.out.println("RECOGIENDO EVENTOS");
 				
 				if (e.getSource()==gestionSalaMostrarSalasJMenuItem) {
-					System.out.println("HAS ELEGIDO MOSTRAR SALAS");
+					System.out.println("HAS ELEGIDO VER LISTA DE SALAS");
+					MostrarSalasVista mostrarSalasVista= new MostrarSalasVista();
+					setContentPane(mostrarSalasVista);
 				}else if(e.getSource()==gestionSalaSalasLibresJMenuItem) {
 					System.out.println("HAS ELEGIDO SALAS LIBRES");
+					SalasLibresVista salasLibresVista = new SalasLibresVista();
+					setContentPane(salasLibresVista);
 				}else if(e.getSource()==gestionSalaMostrarSalasOcupadasJMenuItem) {
 					System.out.println("HAS ELEGIDO MOSTRAR SALAS OCUPADAS");
+					SalasOcupadasVista salasOcupadasVista = new SalasOcupadasVista();
+					setContentPane(salasOcupadasVista);
 				}else if(e.getSource()==gestionClienteRegistrarClienteJMenuItem) {
 					System.out.println("HAS ELEGIDO REGISTRAR CLIENTE");
 					RegistrarClienteVista registrarClienteVista = new RegistrarClienteVista();

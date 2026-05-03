@@ -13,6 +13,7 @@ public class GestorCine {
 	private List<Cliente> clientes;
 	private List<Factura> facturas;
 	private double precio;
+	
 
 	public GestorCine() {
 
@@ -21,10 +22,26 @@ public class GestorCine {
 		funciones = new ArrayList<>();
 		clientes = new ArrayList<>();
 		facturas = new ArrayList<>();
+		salas.add(new Sala("iSense", 5, 6));
+		salas.add(new Sala("IMax", 5, 6));
+		salas.add(new Sala("LUXE", 5, 6));
+		salas.add(new Sala("Dolby Atmos", 5, 6));
+		salas.add(new Sala("MaxScreen", 5, 6));
+		salas.add(new Sala("4K-Vision", 5, 6));
+		salas.add(new Sala("Immersive Room", 5, 6));
 
 	}
+	/*.registrarSala(new Sala("iSense", 5, 6));
+	CineTresAguas.registrarSala(new Sala("IMax", 5, 6));
+	CineTresAguas.registrarSala(new Sala("LUXE", 5, 6));
+	CineTresAguas.registrarSala(new Sala("Dolby Atmos", 5, 6));
+	CineTresAguas.registrarSala(new Sala("MaxScreen", 5, 6));
+	CineTresAguas.registrarSala(new Sala("4K-Vision", 5, 6));
+	CineTresAguas.registrarSala(new Sala("Immersive Room", 5, 6));*/
+	
+	
+	
 	// PRECIO
-
 	public double getPrecio() {
 		return precio;
 	}

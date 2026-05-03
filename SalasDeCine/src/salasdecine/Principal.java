@@ -31,14 +31,14 @@ public class Principal {
 
 		// Creamos un gestor de cine
 		GestorCine CineTresAguas = new GestorCine();
-		// SE CREAN LAS SALAS PARA EL CINE
-		CineTresAguas.registrarSala(new Sala("iSense", 5, 6));
+		// SE CREAN LAS SALAS PARA EL CINE, LAS TUVE QUE PONER EN GESTORCINE Y EN EL CONSTRUCTOR AÑADIR LAS SALAS
+		/*CineTresAguas.registrarSala(new Sala("iSense", 5, 6));
 		CineTresAguas.registrarSala(new Sala("IMax", 5, 6));
 		CineTresAguas.registrarSala(new Sala("LUXE", 5, 6));
 		CineTresAguas.registrarSala(new Sala("Dolby Atmos", 5, 6));
 		CineTresAguas.registrarSala(new Sala("MaxScreen", 5, 6));
 		CineTresAguas.registrarSala(new Sala("4K-Vision", 5, 6));
-		CineTresAguas.registrarSala(new Sala("Immersive Room", 5, 6));
+		CineTresAguas.registrarSala(new Sala("Immersive Room", 5, 6));*/
 		// tengo que añadir un set para asignar el precio que tendra la entrada
 		double precioEntrada = 10.50;
 		CineTresAguas.setPrecio(precioEntrada);
