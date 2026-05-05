@@ -18,9 +18,9 @@ import java.awt.event.ActionEvent;
 public class ListaClienteVista extends JPanel {
 	private JTable table;
 	private ListaClienteControlador controlador;
-	
-	private final String[] cabeceraTabla= {"ID CLIENTE", "NOMBRE", "EMAIL", "FECHA NACIMIENTO"};
-	private String [][] datosTabla= new String [20][4]; //IRAN LOS DATOS DE LAA TABLA 
+
+	private final String[] cabeceraTabla = { "ID CLIENTE", "NOMBRE", "EMAIL", "FECHA NACIMIENTO" };
+	private String[][] datosTabla = new String[20][4]; // IRAN LOS DATOS DE LAA TABLA
 
 	public ListaClienteVista() {
 
@@ -42,8 +42,8 @@ public class ListaClienteVista extends JPanel {
 		add(btnConsultar);
 		btnConsultar.addActionListener(controlador);
 
-
-		table = new JTable(datosTabla, cabeceraTabla); // <--- PASAMOS PRIMERO LOS DATOS DE LA TABLA Y LA CABECERA DE LA												// TABLA
+		table = new JTable(datosTabla, cabeceraTabla); // <--- PASAMOS PRIMERO LOS DATOS DE LA TABLA Y LA CABECERA DE LA
+														// // TABLA
 		table.setBorder(new LineBorder(new Color(0, 0, 0)));
 		// table.setBounds(107, 195, 244, 49); //ANCHO ALTO
 		table.setGridColor(Color.BLACK); // <--EL COLOR
@@ -52,26 +52,26 @@ public class ListaClienteVista extends JPanel {
 		scrollTabla.setBounds(34, 159, 480, 150);
 		// add(table);
 		add(scrollTabla);
-		
-		
 
 	}
-	public void setClientes (String [][] clientes) {
-		for(int i=0;i<clientes.length; i++) {
+
+	public void setClientes(String[][] clientes) {
+		for (int i = 0; i < clientes.length; i++) {
 			System.out.println(clientes[i][0]);
 			System.out.println(clientes[i][1]);
 			System.out.println(clientes[i][2]);
 			System.out.println(clientes[i][3]);
 		}
-		
+
 		table.setModel((new javax.swing.table.DefaultTableModel(clientes, cabeceraTabla)));
-		//datosTabla=cliente; //EL CLIENTE QUE TENEMOS LO GUARDAMOS EN LA TABLA
+		// datosTabla=cliente; //EL CLIENTE QUE TENEMOS LO GUARDAMOS EN LA TABLA
 	}
+
 	// MENSAJE PARA UNA ALERTA, SE HARA UNA ALERTA CON ESE MENSAJE
-		public void setError(String mensaje) {
-			// PARA QUE HAGA LA ALERTA
-			JOptionPane.showMessageDialog(JOptionPane.getFrameForComponent(this), mensaje);
-			// CUANDO LO USEMOS ESTO EN EL CONTROLADOR HABRIA QUE LLAMARLO POR EJEMPLO:
-			// vista.setError("ERROR QUE QUIERAS DECIR");
-		}
+	public void setError(String mensaje) {
+		// PARA QUE HAGA LA ALERTA
+		JOptionPane.showMessageDialog(JOptionPane.getFrameForComponent(this), mensaje);
+		// CUANDO LO USEMOS ESTO EN EL CONTROLADOR HABRIA QUE LLAMARLO POR EJEMPLO:
+		// vista.setError("ERROR QUE QUIERAS DECIR");
+	}
 }

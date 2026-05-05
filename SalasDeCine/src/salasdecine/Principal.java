@@ -188,14 +188,10 @@ public class Principal {
 						fechaFin = sc.next();
 
 						// CREO LA FUNCION CON LOS DATOS
-
-						Funcion funcion = new Funcion(fechaInicio, fechaFin, salaElegida,
+						CineTresAguas.registrarFuncion(fechaInicio, fechaFin, salaElegida,
 								CineTresAguas.getPeliculas().get(opcionesCatalogoPeliculas - 1));
+						
 						System.out.println("---------FUNCION REGISTRADA");
-						// IMPRIMO LA FUNCION
-						System.out.println(funcion);
-						// AÑADO LA FUNCION
-						CineTresAguas.registrarFuncion(funcion);
 						break;
 
 					case 2:

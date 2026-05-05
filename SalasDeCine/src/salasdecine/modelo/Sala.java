@@ -18,9 +18,7 @@ public class Sala {
     public int getCapacidad() {
         return capacidad;
     }
-
     
-
     public String getNombre() {
 		return nombre;
 	}

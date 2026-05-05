@@ -8,6 +8,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import salasdecine.vistas.DarAltaFuncionVista;
 import salasdecine.vistas.DarAltaPeliculaVista;
 import salasdecine.vistas.DatosClienteVista;
 import salasdecine.vistas.ListaClienteVista;
@@ -99,6 +100,8 @@ public class Ventana extends JFrame implements ActionListener{
 				//OPCIONES DEL MENU DE FUNCION
 				gestionFuncionDarAltaJMenuItem = new JMenuItem("Dar de alta funcion");
 				cineJMenuFuncion.add(gestionFuncionDarAltaJMenuItem);
+				gestionFuncionDarAltaJMenuItem.addActionListener(this);
+				
 				gestionFuncionConsultarDispFuncion = new JMenuItem("Consultar disponibilidad de la funcion");
 				cineJMenuFuncion.add(gestionFuncionConsultarDispFuncion);
 				gestionFuncionAgregarEntradaFuncion = new JMenuItem("Agregar Entrada a una funcion");
@@ -169,7 +172,13 @@ public class Ventana extends JFrame implements ActionListener{
 					System.out.println("HAS ELEGIDO ALTA PELICULA");
 					DarAltaPeliculaVista darAltaPeliculaVista= new DarAltaPeliculaVista();
 					setContentPane(darAltaPeliculaVista);
+				}else if(e.getSource()==gestionFuncionDarAltaJMenuItem) {
+					System.out.println("HAS ELEGIDO DAR DE ALTA FUNCION");
+					DarAltaFuncionVista darAltaFuncionVista = new DarAltaFuncionVista();
+					setContentPane(darAltaFuncionVista);
 				}
+					
+
 				setVisible(true); //para refrescar
 		
 	}
