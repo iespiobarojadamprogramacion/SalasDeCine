@@ -71,31 +71,33 @@ public class DarAltaPeliculaVista extends JPanel{
 		
 		JButton btnNewButton = new JButton("DarAlta");
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		btnNewButton.setBounds(145, 219, 145, 20);
 		add(btnNewButton);
 		btnNewButton.addActionListener(Controlador);
+		
 		buttomclasificacion=new ButtonGroup ();
+		
 		radiosiete= new JRadioButton("SIETE");
 		radiosiete.setBounds(132, 166, 62, 20);
 		add(radiosiete);
 		buttomclasificacion.add(radiosiete);
 		radiosiete.setSelected(true);
-		 radiodoce = new JRadioButton("DOCE");
+		
+		radiodoce = new JRadioButton("DOCE");
 		radiodoce.setBounds(196, 166, 76, 20);
 		add(radiodoce);
 		buttomclasificacion.add(radiodoce);
-		 radiodieciseis = new JRadioButton("DIECISESIS");
+		
+		radiodieciseis = new JRadioButton("DIECISESIS");
 		radiodieciseis.setBounds(274, 166, 87, 20);
 		add(radiodieciseis);
 		buttomclasificacion.add(radiodieciseis);
-		 radiodieciocho = new JRadioButton("DIECIOCHO");
+		
+		radiodieciocho = new JRadioButton("DIECIOCHO");
 		radiodieciocho.setBounds(361, 166, 102, 20);
 		add(radiodieciocho);
 		buttomclasificacion.add(radiodieciocho);
+		
 	}
 	public String getTitulo() {
 		return Textitulo.getText();

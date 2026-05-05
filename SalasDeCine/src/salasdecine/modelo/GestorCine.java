@@ -119,8 +119,14 @@ public class GestorCine {
 	}
 
 	// --- FUNCIONES ---
-	public void registrarFuncion(Funcion funcion) {
+	/*public void registrarFuncion(Funcion funcion) {
 		this.funciones.add(funcion);
+	}*/
+	//FUNCION PARA LA INTERFAZ, Y QUIZAS TOCARA MODIFICAR EL MAIN PARA QUE LA USE
+	public void registrarFuncion(String fechaInicio, String fechaFin, Sala sala, Pelicula pelicula) {
+		Funcion funcion= new Funcion (fechaInicio, fechaFin, sala, pelicula);
+		this.funciones.add(funcion);
+		
 	}
 
 	public void mostrarCatalogoFunciones() {

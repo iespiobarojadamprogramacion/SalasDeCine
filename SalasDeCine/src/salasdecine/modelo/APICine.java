@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import salasdecine.utilidades.NotFoundClienteException;
+import salasdecine.utilidades.SalaOcupadaException;
 
 public class APICine {
 	
@@ -135,5 +136,63 @@ public class APICine {
 		}
 		return resultadoSalasOcupadas;
 	}
+	public String [][] listaPeliculas(){
+		
+		List<Pelicula> listaPeliculas = cine.getPeliculas();
+		String [][] resultadoPeliculas = new String [listaPeliculas.size()][2];
+		if(listaPeliculas.size()==0) {
+			throw new NullPointerException();
+		}
+		int fila=0;
+		for (Pelicula p: listaPeliculas) {
+			resultadoPeliculas[fila][0]=String.valueOf(fila+1);
+			resultadoPeliculas[fila][1]=p.getTitulo();
+			fila++;		
+		}
+		return resultadoPeliculas;
+	}
+	//METODO PARA USAR EN EL JCOMBOBOX
+	public String [] numerosDePeliculas() {
+		List <Pelicula> listaPeliculas=cine.getPeliculas();
+		String [] letrasCantidadPelis = new String [listaPeliculas.size()];
+		if(listaPeliculas.size()==0) {
+			throw new NullPointerException();
+		}
+		int fila=0;
+		for (Pelicula p: listaPeliculas) {
+			letrasCantidadPelis[fila]=String.valueOf(fila+1);
+			fila++;		
+		}
+		return letrasCantidadPelis; //retorno en letras lo de 1, 2 , 3 .. etc 
+	}
+	//METODO PARA DAR DE ALTA FUNCION
+	public void darAltaFuncion(String fechaInicio, String fechaFin, Sala sala, Pelicula pelicula) throws SalaOcupadaException {
+		//USO EL METODO DE GESTOR DE CINE PARA COMPROBAR SI UNA SALA ESTA DISPONIBLE
+		if (cine.salaYaAsignada(sala)) {
+			System.out.println("ERROR: Esa sala ya tiene una función asignada.");	
+			throw new SalaOcupadaException();
+		}
+		cine.registrarFuncion(fechaInicio, fechaFin, sala, pelicula);
+	}
+	//METODO USADO PARA QUE ME RETOME LA PELICULA POR INDICE
+	public Pelicula getPeliculaPorIndice(int indice) {
+		List<Pelicula> listaPeliculas=cine.getPeliculas();
+		//AÑADO ESTE PARA VALIDAR LA LISTA DE PELICULAS 
+		if(indice < 0 || indice >= listaPeliculas.size()) {
+	        return null;
+	    }
+		return listaPeliculas.get(indice);
+	}
+	//METODO USADO EN FUNCION, PORQUE TENIA EL NOMBRE DE LA SALA EN STRING
+	public Sala getSalaPorNombre(String nombre) {
+		List<Sala> salas =cine.getSalas();
+		for (Sala s: salas) {
+			if(s.getNombre().equals(nombre)) {
+				return s;
+			}
+		}
+		return null;
+	}
+	
 
 }
