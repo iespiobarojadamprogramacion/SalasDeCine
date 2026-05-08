@@ -194,5 +194,34 @@ public class APICine {
 		return null;
 	}
 	
-
+	public String [][] funcioneslista() {
+		List<Funcion> listafunciones=cine.getFunciones();
+		if(listafunciones.size()==0) {
+			throw new NullPointerException();
+		}
+		int filas=0;
+		String [][] listafuncionesString=new String [listafunciones.size()] [2];
+		for(Funcion f:listafunciones) {
+			listafuncionesString[filas][0]=f.getPelicula().getTitulo();
+			listafuncionesString[filas][1]=f.getSala().getNombre();
+			filas++;
+			
+			
+		}
+		return listafuncionesString;
+	}
+	public String [][]entradaCliente() {
+		List<Cliente> listaclientes=cine.getClientes();
+		if(listaclientes.size()==0) {
+			throw new NullPointerException();
+		}
+		int flias2=0;
+		String [][]listaclientesString=new String [listaclientes.size()][2];
+		for (Cliente c :listaclientes) {
+			listaclientesString[flias2][0]=String.valueOf(c.getId_Cliente());
+			listaclientesString[flias2][1]=c.getNombre();
+			flias2++;
+		}
+		return listaclientesString;
+	}
 }

@@ -16,6 +16,7 @@ import salasdecine.vistas.MostrarSalasVista;
 import salasdecine.vistas.RegistrarClienteVista;
 import salasdecine.vistas.SalasLibresVista;
 import salasdecine.vistas.SalasOcupadasVista;
+import salasdecine.vistas.VenderEntradaVista;
 
 public class Ventana extends JFrame implements ActionListener{
 	//VARIABLES PARA ITEM DEL JMENU
@@ -125,6 +126,8 @@ public class Ventana extends JFrame implements ActionListener{
 				//OPCIONES DEL MENU DE ENTRADA
 				gestionEntradaVenderEntradaJMenuItem = new JMenuItem ("Vender entrada");
 				cineJMenuEntrada.add(gestionEntradaVenderEntradaJMenuItem);
+				gestionEntradaVenderEntradaJMenuItem.addActionListener(this);
+				
 				gestionEntradaMostrarEntradasFuncionJMenuItem = new JMenuItem("Mostrar entradas funcion");
 				cineJMenuEntrada.add(gestionEntradaMostrarEntradasFuncionJMenuItem);
 				gestionEntradaCancelarEntradaJMenuItem = new JMenuItem ("Cancelar Entradas");
@@ -176,6 +179,11 @@ public class Ventana extends JFrame implements ActionListener{
 					System.out.println("HAS ELEGIDO DAR DE ALTA FUNCION");
 					DarAltaFuncionVista darAltaFuncionVista = new DarAltaFuncionVista();
 					setContentPane(darAltaFuncionVista);
+					
+				}else if(e.getSource()==gestionEntradaVenderEntradaJMenuItem) {
+					System.out.println("HAS ELEGIDO VENDER ENTRADA");
+					VenderEntradaVista dardealtaentradavista=new VenderEntradaVista();
+					setContentPane( dardealtaentradavista);
 				}
 					
 
