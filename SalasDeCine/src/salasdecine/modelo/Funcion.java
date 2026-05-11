@@ -105,7 +105,7 @@ public class Funcion {
 		if (!asientoOcupadoEnHora(fila, columna, hora)) {
 			return true;
 		}
-		return true;
+		return false;
 	}
 
 	public void agregarEntrada(Entrada entrada) {
@@ -117,9 +117,9 @@ public class Funcion {
 		for (int i=0; i<sala.getFila(); i++) {
 			for(int j=0;j<sala.getColumna(); j++) {
 				if (asientoOcupadoEnHora(i, j, hora)) {
-					mapa+= "[X]\t";
+					mapa+= "[X]";
 				}else {
-					mapa+= "[ ]\t";
+					mapa+= "[ ] ";
 				}
 			}
 			mapa+=" \n";

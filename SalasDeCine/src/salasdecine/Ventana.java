@@ -50,7 +50,7 @@ public class Ventana extends JFrame implements ActionListener{
 	public Ventana() {
 		super("Sala de cine");
 		//X Y Y EL TAMAÑO 
-		setBounds (100, 100,600, 500);
+		setBounds (100, 100,750, 600);
 		setVisible(true);
 		//TENEMOS QUE CREAR EL MENU EN ESTA VENTANA
 		//PARA CREAR UN MENU SIEMPRE TENEMOS QUE CREAR UN OBJETO LLAMADO MENU BAR, ESE OBJETO MENUBAR
