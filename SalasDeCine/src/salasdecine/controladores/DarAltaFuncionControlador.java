@@ -25,7 +25,7 @@ public class DarAltaFuncionControlador implements ActionListener {
 		// TODO Auto-generated method stub
 		System.out.println("HAS ELEGIDO DAR DE ALTA FUNCION");
 		String sala = vista.getSala();
-		String [][] resultadoPeliculas= api.listaPeliculas();;
+		String [][] resultadoPeliculas;
 		String [] resultadoNumeroPeliculas;
 		
 		
@@ -55,15 +55,16 @@ public class DarAltaFuncionControlador implements ActionListener {
 				
 				String seleccion=vista.getPeliculaSeleccionada(); //PASO A ENTERO EL VALOR QUE TIENE EL JCOMOB
 				if(seleccion==null) {
-					throw new IllegalStateException("Primero carga las Peliculas");
+					throw new IllegalStateException("No tienes peliculas dadas de alta");
+					
 				}
 				
 				int indice =Integer.parseInt(seleccion)-1;
 				String[][] peliculas=api.listaPeliculas();	
 				String nombrePelicula=peliculas[indice][1];
-				
 				String nombreSala=vista.getSala();	
 				Sala salaClase =api.getSalaPorNombre(nombreSala);
+				
 				if(sala==null) {
 					vista.setError("Sala no encontrada");
 				}

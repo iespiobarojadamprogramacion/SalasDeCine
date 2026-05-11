@@ -120,10 +120,10 @@ public class DarAltaFuncionVista extends JPanel {
 		// add(table);
 		add(scrollTabla);
 		
-		//probando solo para luego intentar usar 
-		/*comboBox = new JComboBox();
+	
+		comboBox = new JComboBox();
 		comboBox.setBounds(375, 120, 60, 22);
-		add(comboBox);*/
+		add(comboBox);
 		
 
 		btnVerPeliculas = new JButton("Ver peliculas");
@@ -205,9 +205,8 @@ public class DarAltaFuncionVista extends JPanel {
 	//LO HICE PARA QUE CUANDO LA LLAME DESDE EL CONTROLADOR ME MONTE EN JComboBox SEGUN LA CANTIDAD DE PELICULAS QUE HAY EN LA LISTA,
 	//COMO ESE VALOR LO GUARDE EN UN STRING CON LOS NUMEROS
 	public void numerosDePeliculas(String [] resultadoNumeroPeliculas) {
-		comboBox = new JComboBox();
-		comboBox.setBounds(375, 120, 60, 22);
-		add(comboBox);
+		comboBox.removeAllItems();
+		
 		for(int i=0; i<resultadoNumeroPeliculas.length; i++ ) {
 			comboBox.addItem(resultadoNumeroPeliculas[i]);
 		}

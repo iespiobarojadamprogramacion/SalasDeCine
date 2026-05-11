@@ -345,10 +345,7 @@ public class Principal {
 						            	  (opcionHora =="3")?"22:00":"error" ;
 							}
 						}
-						    
-						
-					
-						
+
 						 
 						//mostrare los asientos para que eliga que fila y columna quieren
 						//posible mejora con un if para evitar crasheos
