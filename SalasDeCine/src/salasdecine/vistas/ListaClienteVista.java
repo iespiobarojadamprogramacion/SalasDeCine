@@ -42,8 +42,7 @@ public class ListaClienteVista extends JPanel {
 		add(btnConsultar);
 		btnConsultar.addActionListener(controlador);
 
-		table = new JTable(datosTabla, cabeceraTabla); // <--- PASAMOS PRIMERO LOS DATOS DE LA TABLA Y LA CABECERA DE LA
-														// // TABLA
+		table = new JTable(datosTabla, cabeceraTabla); // <--- PASAMOS PRIMERO LOS DATOS DE LA TABLA Y LA CABECERA DE LA												// // TABLA
 		table.setBorder(new LineBorder(new Color(0, 0, 0)));
 		// table.setBounds(107, 195, 244, 49); //ANCHO ALTO
 		table.setGridColor(Color.BLACK); // <--EL COLOR

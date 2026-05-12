@@ -220,10 +220,11 @@ public class APICine {
 			throw new NullPointerException();
 		}
 		int filas = 0;
-		String[][] listafuncionesString = new String[listafunciones.size()][2];
+		String[][] listafuncionesString = new String[listafunciones.size()][3];
 		for (Funcion f : listafunciones) {
-			listafuncionesString[filas][0] = f.getPelicula().getTitulo();
-			listafuncionesString[filas][1] = f.getSala().getNombre();
+			listafuncionesString[filas][0]= String.valueOf(filas+1);
+			listafuncionesString[filas][1] = f.getPelicula().getTitulo();
+			listafuncionesString[filas][2] = f.getSala().getNombre();
 			filas++;
 
 		}
