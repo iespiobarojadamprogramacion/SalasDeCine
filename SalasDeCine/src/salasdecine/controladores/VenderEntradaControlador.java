@@ -52,7 +52,7 @@ public class VenderEntradaControlador implements ActionListener{
 				
 			}
 			
-			//nuevo añadido
+			//nuevo añadido para que el mapa cargue segun las funcuines con su horario
 		}else if(e.getSource()==vista.getRadio16() ||e.getSource()==vista.getRadio19() || e.getSource()==vista.getRadio22() ) {		
 			int indiceFuncion=vista.getFuncionSeleccionada();
 			Funcion funcionSeleccionada=api.getFuncionPorIndiceLista(indiceFuncion);

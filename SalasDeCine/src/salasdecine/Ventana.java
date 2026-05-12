@@ -8,6 +8,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import salasdecine.vistas.ConsultarDisponibilidadFuncionVista;
 import salasdecine.vistas.DarAltaFuncionVista;
 import salasdecine.vistas.DarAltaPeliculaVista;
 import salasdecine.vistas.DatosClienteVista;
@@ -105,6 +106,8 @@ public class Ventana extends JFrame implements ActionListener{
 				
 				gestionFuncionConsultarDispFuncion = new JMenuItem("Consultar disponibilidad de la funcion");
 				cineJMenuFuncion.add(gestionFuncionConsultarDispFuncion);
+				gestionFuncionConsultarDispFuncion.addActionListener(this);
+				
 				gestionFuncionAgregarEntradaFuncion = new JMenuItem("Agregar Entrada a una funcion");
 				cineJMenuFuncion.add(gestionFuncionAgregarEntradaFuncion);
 				gestionFuncionMostrarAsientos = new JMenuItem("Mostrar Asientos");
@@ -184,6 +187,10 @@ public class Ventana extends JFrame implements ActionListener{
 					System.out.println("HAS ELEGIDO VENDER ENTRADA");
 					VenderEntradaVista dardealtaentradavista=new VenderEntradaVista();
 					setContentPane( dardealtaentradavista);
+				}else if (e.getSource()==gestionFuncionConsultarDispFuncion) {
+					System.out.println("HAS ELEGIDO CONSULTAR FUNCION");
+					ConsultarDisponibilidadFuncionVista consultarDisponibilidadFuncionVista= new ConsultarDisponibilidadFuncionVista();
+					setContentPane(consultarDisponibilidadFuncionVista);
 				}
 					
 
