@@ -74,7 +74,11 @@ public class GestorCine {
 	public List<Factura> getFacturas() {
 		return facturas;
 	}
-
+	/**
+	 * METODO PARA CONSULTAR SALA POR EL NOMBRE DE LA SALA
+	 * @param Nombresala
+	 * @return
+	 */
 	public Sala consultarSala(String Nombresala) {
 		for (Sala s : salas) {
 			if (s.getNombre().equalsIgnoreCase(Nombresala)) {
@@ -89,12 +93,18 @@ public class GestorCine {
 		this.peliculas.add(pelicula);
 	}*/
 	
-	//METODO registrarPelicula QUE USARE PARA LA INTERFAZ
+	/**
+	 * METODO registrarPelicula QUE USARE PARA LA INTERFAZ
+	 */
 	public void registrarPelicula(String titulo, int duracion, String genero, ClasificacionEdad clasificacionEdad) {
 		Pelicula pelicula = new Pelicula(titulo, duracion, genero, clasificacionEdad);
 		this.peliculas.add(pelicula);
 	}
-
+	/**
+	 * METODO PARA CONSULTAR UNA PELICULA POR SU TITULO
+	 * @param titulo
+	 * @return
+	 */
 	public Pelicula consultarPelicula(String titulo) {
 		for (Pelicula p : peliculas) {
 			if (p.getTitulo().equalsIgnoreCase(titulo)) {
@@ -104,14 +114,18 @@ public class GestorCine {
 		return null;
 	}
 
-	// Mostrar el catalogo de Peliculas
+	/**
+	 * Mostrar el catalogo de Peliculas
+	 */
 	public void mostrarCatalogoPeliculas() {
 		for (int i = 0; i < peliculas.size(); i++) {
 			System.out.println((i + 1) + " " + peliculas.get(i).getTitulo());
 		}
 	}
 
-	// Mostrar el Catalogo De Salas
+	/**
+	 * Mostrar el Catalogo De Salas
+	 */
 	public void mostrarCatalogoSalas() {
 		for (int i = 0; i < salas.size(); i++) {
 			System.out.println((i + 1) + " " + salas.get(i).getNombre());
@@ -122,13 +136,22 @@ public class GestorCine {
 	/*public void registrarFuncion(Funcion funcion) {
 		this.funciones.add(funcion);
 	}*/
-	//FUNCION PARA LA INTERFAZ, Y QUIZAS TOCARA MODIFICAR EL MAIN PARA QUE LA USE
+	
+	/**
+	 * FUNCION PARA LA INTERFAZ, Y QUIZAS TOCARA MODIFICAR EL MAIN PARA QUE LA USE
+	 * @param fechaInicio
+	 * @param fechaFin
+	 * @param sala
+	 * @param pelicula
+	 */
 	public void registrarFuncion(String fechaInicio, String fechaFin, Sala sala, Pelicula pelicula) {
 		Funcion funcion= new Funcion (fechaInicio, fechaFin, sala, pelicula);
 		this.funciones.add(funcion);
 		
 	}
-
+	/**
+	 * METODO PARA MOSTRAR EL CATALOGO DE FUNCIONES
+	 */
 	public void mostrarCatalogoFunciones() {
 		for (int i = 0; i < funciones.size(); i++) {
 			System.out.println("----------------------------------------------------");
@@ -147,7 +170,11 @@ public class GestorCine {
 			f.setFechaFin(nuevaHora);
 		}
 	}*/
-
+	/**
+	 * METODO PARA CONSULTAR FUNCION
+	 * @param idFuncion
+	 * @return
+	 */
 	public Funcion consultarFuncion(int idFuncion) {
 		for (Funcion f : funciones) {
 			if (f.getIdFuncion() == idFuncion) {
@@ -156,8 +183,12 @@ public class GestorCine {
 		}
 		return null;
 	}
-	//para comprobar que la funcion existe y con ello mostrar las entradas que tiene registrada, 
-	//simple comprobacion para usarla en principal
+	/**
+	 * para comprobar que la funcion existe y con ello mostrar las entradas que tiene registrada, 
+	 * simple comprobacion para usarla en principal
+	 * @param idFuncion
+	 */
+
 	public void mostrarEntradasDeFuncion(int idFuncion) {
 		Funcion funcion= consultarFuncion(idFuncion);
 		if (funcion == null) {
@@ -170,6 +201,12 @@ public class GestorCine {
 	}
 
 	// --- CLIENTES ---
+	/**
+	 * METODO PARA REGISTRO CLIENTE
+	 * @param nombre
+	 * @param email
+	 * @param fechaNacimiento
+	 */
 	public void registroCliente(String nombre, String email, String fechaNacimiento) {
 		Cliente cliente = new Cliente(nombre, email, fechaNacimiento);
 		this.clientes.add(cliente);
@@ -185,7 +222,11 @@ public class GestorCine {
 	//PERO CREE UN METODO AQUI ARRIBA PARA REGISTRAR EL CLIENTE CON LOS PARAMETROS DARLE DE ALTA COMO CLIENTE Y AÑADIRLO
 	//AHORA EL PRINCIPAL YA NO LO HACE SOLO LLAMA AL METODO REGISTROCLIENTE 
 	
-	//consulto un cliente con id cliente, y me regresa ese cliente
+	/**
+	 * consulto un cliente con id cliente, y me regresa ese cliente
+	 * @param idCliente
+	 * @return
+	 */
 	public Cliente consultarCliente(int idCliente) {
 		for (Cliente c : clientes) {
 			if (c.getId_Cliente() == idCliente) {
@@ -194,8 +235,11 @@ public class GestorCine {
 		}
 		return null;
 	}
-	//METODO PARA INTERFACEGRAFICA, DESPUES DE IMPLEMENTARLO ME DI CUENTA QUE EL METODO DE ARRIBA PODIA HABERLO USADO
-	//PARA ESTO, YA QUE DIRECTAMENTE ME DEVOLVIA EL CLIENTE Y DE AHI ESOS VALORES LOS GUARDABA EN UN STRING [][]
+	/**
+	 * METODO PARA INTERFACEGRAFICA, DESPUES DE IMPLEMENTARLO ME DI CUENTA QUE EL METODO DE ARRIBA PODIA HABERLO USADO
+	 * PARA ESTO, YA QUE DIRECTAMENTE ME DEVOLVIA EL CLIENTE Y DE AHI ESOS VALORES LOS GUARDABA EN UN STRING [][]
+	 */
+	
 	public ArrayList <Cliente> clienteSoloArray(int idCliente){
 		ArrayList<Cliente> cliente= new ArrayList<Cliente>();
 		for(int i=0; i<clientes.size();i++) {
@@ -207,7 +251,9 @@ public class GestorCine {
 		
 	}
 
-	// recorro la lista de clientes para mostrarla
+	/**
+	 * recorro la lista de clientes para mostrarla
+	 */
 	public void mostrarClientes() {
 		for (Cliente c : clientes) {
 			System.out.println("----------------------");
@@ -216,7 +262,10 @@ public class GestorCine {
 		}
 	}
 
-	// MOSTRARA EL CLIENTE SI ESTA EN LA LISTA
+	/**
+	 * MOSTRARA EL CLIENTE SI ESTA EN LA LISTA
+	 * @param cliente
+	 */
 	public void mostarCliente(Cliente cliente) {
 		if (cliente == null) {
 			System.out.println("No existe cliente con ese ID");
@@ -224,7 +273,10 @@ public class GestorCine {
 			System.out.println(cliente);
 		}
 	}
-	//muestro la entradas de los clientes
+	/**
+	 * MUESTRO LAS ENTRADAS DE LOS CLIENTES
+	 * @param idCliente
+	 */
 	public void mostrarEntradasClientes(int idCliente) {
 		boolean tieneEntradas=false;
 		//creo el cliente para comprobar de ahi
@@ -254,6 +306,16 @@ public class GestorCine {
 	}
 
 	// --- VENTAS ---
+	/**
+	 * METODO PARA VENDER UNA ENTRADA
+	 * @param idFuncion
+	 * @param idCliente
+	 * @param fila
+	 * @param columna
+	 * @param hora
+	 * @param metodoPago
+	 * @return
+	 */
 	public Factura venderEntrada(int idFuncion, int idCliente, int fila, int columna, String hora,
 			MetodoDePago metodoPago) {
 		//// consulto que la funcion existe
@@ -314,7 +376,14 @@ public class GestorCine {
 		return factura;
 	}
 
-	//Metodo para cancelar la entrada de la funcion.
+	/**
+	 * Metodo para cancelar la entrada de la funcion.
+	 * @param idFuncion
+	 * @param fila
+	 * @param columna
+	 * @param hora
+	 * @return
+	 */
 	public boolean cancelarEntrada(int idFuncion, int fila, int columna, String hora) {
 		Funcion funcion = consultarFuncion(idFuncion);
 		boolean repuesta=false;
@@ -337,7 +406,14 @@ public class GestorCine {
 		//regresa si fue o no fue cancelada, pero internamente este metodo llama al metodo de funcion que lo va a cancelar.
 		return repuesta;
 	}
-
+	/**
+	 * CONSULTAR DISPONIBILIDAD Y RETORNAMOS UN TRUE O UN FALSE
+	 * @param idFuncion
+	 * @param fila
+	 * @param columna
+	 * @param hora
+	 * @return
+	 */
 	public boolean consultarDisponibilidad(int idFuncion, int fila, int columna, String hora) {
 		Funcion fun = consultarFuncion(idFuncion);
 		if (fun != null) {
@@ -346,12 +422,16 @@ public class GestorCine {
 		return false;
 	}
 	
-	//borrar
-	/*public Factura[] consultarVentas() {
-		return facturas.toArray(new Factura[0]);
-	}*/
-
+	
 	// FUNCIONES QUE TENIA EN EL MAIN
+	/**
+	 * FUNCION PARA AGREGAR UNA ENTRADA
+	 * @param fila
+	 * @param columna
+	 * @param hora
+	 * @param funcionAux
+	 * @return
+	 */
 	public boolean agregarEntrada(int fila, int columna, String hora, Funcion funcionAux) {
 
 		if (!funcionAux.consultarDisponibilidad(fila, columna, hora)) {
@@ -365,7 +445,12 @@ public class GestorCine {
 		}
 	}
 
-	// USADO PARA VALIDAR LAS OPCIONES CORRECTAS DE LOS CATALOGOS
+	/**
+	 * USADO PARA VALIDAR LAS OPCIONES CORRECTAS DE LOS CATALOGOS
+	 * @param sc
+	 * @param tamanoCatalogo
+	 * @return
+	 */
 	public int validarCatalogo(Scanner sc, int tamanoCatalogo) {
 		int opcion;
 		do {
@@ -380,9 +465,12 @@ public class GestorCine {
 
 	}
 
-	// recibo el scanner por parametro para commprobar que la clasificacion que va a
-	// introducir de la clasificacion sea correcta, ya que como se eeuqivoque
-	// se rompera el codigo
+	/**
+	 * recibo el scanner por parametro para commprobar que la clasificacion que va a
+	 * introducir de la clasificacion sea correcta, ya que como se eeuqivoque se rompera el codigo
+	 * @param sc
+	 * @return
+	 */
 	public String comprobarClasificacionEdad(Scanner sc) {
 		String clasificacionEdad;
 
@@ -398,8 +486,12 @@ public class GestorCine {
 		return clasificacionEdad;
 	}
 
-	// metodo para saber si una sala ya tiene una funcion registrada a la hora que
-	// estamos comprobando
+	/**
+	 * metodo para saber si una sala ya tiene una funcion registrada a la hora que estamos comprobando
+	 * @param sala
+	 * @param hora
+	 * @return
+	 */
 	public boolean salaOcupadaEnHorario(Sala sala, String hora) {
 		for (Funcion f : funciones) {
 			if (f.getSala().equals(sala) && f.horarioValido(hora)) {
@@ -409,8 +501,11 @@ public class GestorCine {
 		return false;
 	}
 
-	// VERIFICAR QUE LA SALA YA ESTA REGISTRADA A OTRA FUNCION, PARA PODER SACARLA Y
-	// NO LA MUESTRE
+	/**
+	 * VERIFICAR QUE LA SALA YA ESTA REGISTRADA A OTRA FUNCION, PARA PODER SACARLA Y NO LA MUESTRE
+	 * @param sala
+	 * @return
+	 */
 	public boolean salaYaAsignada(Sala sala) {
 		for (Funcion f : funciones) {
 			if (f.getSala().equals(sala)) {
@@ -419,7 +514,10 @@ public class GestorCine {
 		}
 		return false;
 	}
-	//opcion para usar en principal para que el cliente pueda cancelar sus entradas
+	/**
+	 * opcion para usar en principal para que el cliente pueda cancelar sus entradas
+	 * @param idCliente
+	 */
 	public void mostrarClienteCancelarEntradaLista(int idCliente) {
 		//CREO UN CLIENTE CON EL ID CLIENTE, ASI CONSIGO ESE CLIENTE
 		Cliente clienteAux = consultarCliente(idCliente);
@@ -447,6 +545,12 @@ public class GestorCine {
 	    }
 
 	}
+	/**
+	 * METODO PARA CANCELAR LA ENTRADA DE UN CLIENTE, PARA QUE EL CLIENTE LA CANCELE
+	 * @param opcion
+	 * @param idCliente
+	 * @return
+	 */
 	public boolean cancelarEntradaClienteOpcionElegida(int opcion, int idCliente) {
 		//creo un cliente
 		
