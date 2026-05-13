@@ -293,5 +293,8 @@ public class APICine {
 	public void venderEntrada(int idFuncion, int idCliente, int fila, int columna, String hora, MetodoDePago metodoPago) {	
 		cine.venderEntrada(idFuncion, idCliente, fila, columna, hora, metodoPago);
 	}
+	public boolean agregarEntradaAFuncion(int fila, int columna, String hora, Funcion funcionElegida) {
+		return cine.agregarEntrada(fila, columna, hora, funcionElegida); //retorna true o false dependiendo del metodo del gestorcine
+	}
 }
 

@@ -65,7 +65,7 @@ public class DatosClienteVista extends JPanel {
 		// TENEMOS QUE MOSTRAR EL RESULTADO id cliente, NOMBRE, EMAIL FECHA NACIMIENTO.
 		
 		table = new JTable(datosTabla, cabeceraTabla); //<--- PASAMOS PRIMERO LOS DATOS DE LA TABLA Y LA CABECERA DE LA TABLA
-		
+		table.getTableHeader().setReorderingAllowed(false);	
 		
 		table.setBorder(new LineBorder(new Color(0, 0, 0)));
 		//table.setBounds(107, 195, 244, 49); //ANCHO ALTO

@@ -8,11 +8,13 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import salasdecine.vistas.AgregarEntradaFuncionVista;
 import salasdecine.vistas.ConsultarDisponibilidadFuncionVista;
 import salasdecine.vistas.DarAltaFuncionVista;
 import salasdecine.vistas.DarAltaPeliculaVista;
 import salasdecine.vistas.DatosClienteVista;
 import salasdecine.vistas.ListaClienteVista;
+import salasdecine.vistas.MostrarAsientosVista;
 import salasdecine.vistas.MostrarSalasVista;
 import salasdecine.vistas.RegistrarClienteVista;
 import salasdecine.vistas.SalasLibresVista;
@@ -28,7 +30,7 @@ public class Ventana extends JFrame implements ActionListener{
 	private JMenuItem gestionSalaSalasLibresJMenuItem;
 	private JMenuItem gestionSalaMostrarSalasOcupadasJMenuItem;
 	
-	//VARIABLES DE JMENUITEM PARA EL MENU
+	//VARIABLES DE JMENUITEM PARA EL MENU DE GESTION FUNCION
 	private JMenuItem gestionFuncionDarAltaJMenuItem;
 	private JMenuItem gestionFuncionConsultarDispFuncion;
 	private JMenuItem gestionFuncionAgregarEntradaFuncion;
@@ -110,8 +112,11 @@ public class Ventana extends JFrame implements ActionListener{
 				
 				gestionFuncionAgregarEntradaFuncion = new JMenuItem("Agregar Entrada a una funcion");
 				cineJMenuFuncion.add(gestionFuncionAgregarEntradaFuncion);
+				gestionFuncionAgregarEntradaFuncion.addActionListener(this);
+				
 				gestionFuncionMostrarAsientos = new JMenuItem("Mostrar Asientos");
 				cineJMenuFuncion.add(gestionFuncionMostrarAsientos);
+				gestionFuncionMostrarAsientos.addActionListener(this);
 				
 				//OPCIONES DEL MENU DE CLIENTE
 				gestionClienteRegistrarClienteJMenuItem = new JMenuItem("Registrar cliente");
@@ -191,6 +196,15 @@ public class Ventana extends JFrame implements ActionListener{
 					System.out.println("HAS ELEGIDO CONSULTAR FUNCION");
 					ConsultarDisponibilidadFuncionVista consultarDisponibilidadFuncionVista= new ConsultarDisponibilidadFuncionVista();
 					setContentPane(consultarDisponibilidadFuncionVista);
+				}else if(e.getSource()==gestionFuncionAgregarEntradaFuncion) {
+					System.out.println("HAS ELEGIDO AGREGAR ENTRADA A FUNCION");
+					AgregarEntradaFuncionVista agregarEntradaFuncionVista= new AgregarEntradaFuncionVista();
+					setContentPane(agregarEntradaFuncionVista);
+					
+				}else if(e.getSource()==gestionFuncionMostrarAsientos) {
+					System.out.println("HAS ELEGIDO MOSTRAR MAPA ASIENTOS");
+					MostrarAsientosVista mostrarAsientosVista= new MostrarAsientosVista();
+					setContentPane(mostrarAsientosVista);
 				}
 					
 

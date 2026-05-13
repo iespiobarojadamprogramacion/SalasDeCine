@@ -54,6 +54,7 @@ public class VenderEntradaVista extends JPanel {
 		add(lblNewLabel);
 
 		Funciontabla = new JTable(datosTabla, cabeceraTabla);
+		Funciontabla.getTableHeader().setReorderingAllowed(false);	
 		// Funciontabla.setBounds(10, 82, 111, 63);
 		JScrollPane Scrollfuncion = new JScrollPane(Funciontabla);
 		Scrollfuncion.setBounds(10, 74, 148, 117);
@@ -129,6 +130,7 @@ public class VenderEntradaVista extends JPanel {
 		add(lblNewLabel_6);
 
 		ClienteTabla = new JTable(datosTablac, cabeceraTablac);
+		ClienteTabla.getTableHeader().setReorderingAllowed(false);	
 		// ClienteTabla.setBounds(305, 77, 106, 68);
 		JScrollPane Scrollclliente = new JScrollPane(ClienteTabla);
 		Scrollclliente.setBounds(473, 74, 130, 109);

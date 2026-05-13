@@ -40,6 +40,7 @@ public class SalasLibresVista extends JPanel {
 		add(lblNewLabel_1);
 
 		table = new JTable(datosTabla, cabeceraTabla); // <--- PASAMOS PRIMERO LOS DATOS DE LA TABLA Y LA CABECERA DE LA
+		table.getTableHeader().setReorderingAllowed(false);	//USADO PORQUE SI NO PUEDO MOVER LA TABLA... Y SEGUN BUSQUE ESTO IMPIDE QUE SE PUEDA REORGANIZAR LA TABLA
 		// // TABLA
 		table.setBorder(new LineBorder(new Color(0, 0, 0)));
 		// table.setBounds(107, 195, 244, 49); //ANCHO ALTO

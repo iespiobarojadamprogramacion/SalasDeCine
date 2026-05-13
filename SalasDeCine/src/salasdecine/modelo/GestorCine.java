@@ -352,14 +352,16 @@ public class GestorCine {
 	}*/
 
 	// FUNCIONES QUE TENIA EN EL MAIN
-	public void agregarEntrada(int fila, int columna, String hora, Funcion funcionAux) {
+	public boolean agregarEntrada(int fila, int columna, String hora, Funcion funcionAux) {
 
 		if (!funcionAux.consultarDisponibilidad(fila, columna, hora)) {
 			System.out.println("Ese asiento no esta disponible");
+			return false;
 		} else {
 			Entrada e = new Entrada(10.50, fila, columna, hora);
 			funcionAux.agregarEntrada(e);
 			System.out.println("Entrada registrada correctamente");
+			return true;
 		}
 	}
 

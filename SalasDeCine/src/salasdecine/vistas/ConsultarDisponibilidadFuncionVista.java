@@ -41,6 +41,7 @@ public class ConsultarDisponibilidadFuncionVista extends JPanel {
 		add(lblNewLabel);
 
 		tablaFunciones = new JTable(datosTabla, cabeceraTabla);
+		tablaFunciones.getTableHeader().setReorderingAllowed(false);	
 		//tablaFunciones.setBounds(20, 104, 154, 83);
 		JScrollPane scrollFuncion = new JScrollPane(tablaFunciones);
 		scrollFuncion.setBounds(20, 104, 154, 83);

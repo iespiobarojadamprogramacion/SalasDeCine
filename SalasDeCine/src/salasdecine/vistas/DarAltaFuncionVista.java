@@ -110,7 +110,9 @@ public class DarAltaFuncionVista extends JPanel {
 		lblNewLabel_1_1.setBounds(193, 45, 214, 14);
 		add(lblNewLabel_1_1);
 		
-		table = new JTable(datosTabla, cabeceraTabla); // <--- PASAMOS PRIMERO LOS DATOS DE LA TABLA Y LA CABECERA DE LA												// TABLA
+		table = new JTable(datosTabla, cabeceraTabla); // <--- PASAMOS PRIMERO LOS DATOS DE LA TABLA Y LA CABECERA DE LA		
+		table.getTableHeader().setReorderingAllowed(false);	
+		// TABLA
 		table.setBorder(new LineBorder(new Color(0, 0, 0)));
 		// table.setBounds(107, 195, 244, 49); //ANCHO ALTO
 		table.setGridColor(Color.BLACK); // <--EL COLOR
