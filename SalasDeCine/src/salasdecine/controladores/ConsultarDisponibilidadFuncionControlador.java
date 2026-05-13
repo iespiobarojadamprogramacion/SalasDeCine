@@ -49,6 +49,9 @@ public class ConsultarDisponibilidadFuncionControlador implements ActionListener
 				System.out.println("LA FILA O LA COLUMNA TIENEN QUE SER NUMEROS");
 				vista.setError("Fila o columna invalida");
 				
+			}catch(NullPointerException npe) {
+				System.err.println("NO HAS ELEGIDO NINGUNA FUNCION");
+				vista.setError("No has seleccionado ninguna funcion");
 			}
 		}
 		
