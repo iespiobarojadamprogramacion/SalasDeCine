@@ -439,6 +439,7 @@ public class GestorCine {
 			return false;
 		} else {
 			Entrada e = new Entrada(10.50, fila, columna, hora);
+			e.asignarFuncion(funcionAux);
 			funcionAux.agregarEntrada(e);
 			System.out.println("Entrada registrada correctamente");
 			return true;
@@ -517,14 +518,15 @@ public class GestorCine {
 	/**
 	 * opcion para usar en principal para que el cliente pueda cancelar sus entradas
 	 * @param idCliente
+	 * @return
 	 */
-	public void mostrarClienteCancelarEntradaLista(int idCliente) {
+	public boolean mostrarClienteCancelarEntradaLista(int idCliente) {
 		//CREO UN CLIENTE CON EL ID CLIENTE, ASI CONSIGO ESE CLIENTE
 		Cliente clienteAux = consultarCliente(idCliente);
 		//SI EL CLIENTE ES NULO REVUELVO QUE NO EXXISTE
 		if(clienteAux==null) {
 			System.out.println("No existe cliente con ese ID");
-			return;
+			return false;
 		}
 		//CREO UNA LISTA DE ENTRADA NUEVA Y VACIA
 		List<Entrada> entradasCliente = new ArrayList <>();
@@ -537,12 +539,13 @@ public class GestorCine {
 	    //COMPROBACION SI LA LISTA ESTA VACIA
 	    if (entradasCliente.isEmpty()) {
 	        System.out.println("El cliente no tiene entradas registradas.");
-	        return;
+	        return false;
 	    }
 	    //recorrer la lista de los cliente
 	    for (int i=0; i<entradasCliente.size(); i++) {
 	    	System.out.println((i+1)+ " - " + entradasCliente.get(i));
 	    }
+	    return true;
 
 	}
 	/**

@@ -140,7 +140,7 @@ public class DarAltaFuncionVista extends JPanel {
 		add(lblNewLabel_1_2);
 		
 		txtFechaInicio = new JTextField();
-		txtFechaInicio.setText("--/--/----");
+		txtFechaInicio.setText("05/06/2026");
 		txtFechaInicio.setBounds(29, 297, 86, 20);
 		add(txtFechaInicio);
 		txtFechaInicio.setColumns(10);
@@ -151,7 +151,7 @@ public class DarAltaFuncionVista extends JPanel {
 		add(lblNewLabel_1_2_1);
 		
 		txtFechaFin = new JTextField();
-		txtFechaFin.setText("30/12/2026");
+		txtFechaFin.setText("15/05/2026");
 		txtFechaFin.setColumns(10);
 		txtFechaFin.setBounds(279, 297, 86, 20);
 		add(txtFechaFin);

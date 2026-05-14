@@ -65,6 +65,7 @@ public class RegistrarClienteVista extends JPanel{
 		add(txtEmail);
 		
 		txtFechaNacimiento = new JTextField();
+		txtFechaNacimiento.setText("02/12/1992");
 		txtFechaNacimiento.setColumns(10);
 		txtFechaNacimiento.setBounds(169, 111, 183, 20);
 		add(txtFechaNacimiento);

@@ -364,10 +364,16 @@ public class Principal {
 		                System.out.println("Método de pago [1-Tarjeta, 2-Efectivo]:");
 		                //CORREGIR ESTA PARTE
 		                int metodoPago = sc.nextInt();
-		                MetodoDePago metodo = (metodoPago == 1) ? MetodoDePago.TARJETA : MetodoDePago.EFECTIVO;
-		                //HASTA AQUI, EL ERROR ESTA EN QUE CUANDO VAS A ELEGIR EL METODO DE PAGO SI PONES 1 NO SE ASIGNA
-		                
-		                Factura factura = CineTresAguas.venderEntrada(opcionFuncionElegida, idCliente, fila, columna, hora, metodo);
+		                MetodoDePago metodo=null;
+		                if(metodoPago==1) {
+		                	metodo=MetodoDePago.TARJETA;
+		                }else if (metodoPago==2) {
+		                	metodo=MetodoDePago.EFECTIVO;
+		                }else{
+		                	System.out.println("Metodo de pago invalido");
+		                	break;
+		                }
+		                Factura factura = CineTresAguas.venderEntrada((opcionFuncionElegida), idCliente, fila, columna, hora, metodo);
 		                if (factura != null) {
 		                    System.out.println("Venta realizada con éxito.");
 		                    System.out.println(factura);
@@ -420,8 +426,11 @@ public class Principal {
 					    System.out.println("Cancelar mi entrada (cliente)");
 					    System.out.println("Dame tu numero de id");
 					    int idUsuarioElegido=sc.nextInt();
-					    CineTresAguas.mostrarClienteCancelarEntradaLista(idUsuarioElegido);
-					    System.out.println("¿Que funcion quieres cancelar?");
+					    boolean tieneEntradas=CineTresAguas.mostrarClienteCancelarEntradaLista(idUsuarioElegido);
+					    if(!tieneEntradas) {
+					    	break;
+					    }
+					    System.out.println("¿Que entrada quieres cancelar?");
 					    int opcionCancelar=sc.nextInt();
 					    CineTresAguas.cancelarEntradaClienteOpcionElegida(opcionCancelar, idUsuarioElegido);
 					    break;
