@@ -11,11 +11,13 @@ import javax.swing.JMenuItem;
 import salasdecine.vistas.AgregarEntradaFuncionVista;
 import salasdecine.vistas.CancelarEntradaVista;
 import salasdecine.vistas.ConsultarDisponibilidadFuncionVista;
+import salasdecine.vistas.ConsultarEntradasClientesVista;
 import salasdecine.vistas.DarAltaFuncionVista;
 import salasdecine.vistas.DarAltaPeliculaVista;
 import salasdecine.vistas.DatosClienteVista;
 import salasdecine.vistas.ListaClienteVista;
 import salasdecine.vistas.MostrarAsientosVista;
+import salasdecine.vistas.MostrarEntradasFuncionVista;
 import salasdecine.vistas.MostrarSalasVista;
 import salasdecine.vistas.RegistrarClienteVista;
 import salasdecine.vistas.SalasLibresVista;
@@ -166,6 +168,7 @@ public class Ventana extends JFrame implements ActionListener {
 
 		gestionEntradaMostrarEntradasFuncionJMenuItem = new JMenuItem("Mostrar entradas funcion");
 		cineJMenuEntrada.add(gestionEntradaMostrarEntradasFuncionJMenuItem);
+		gestionEntradaMostrarEntradasFuncionJMenuItem.addActionListener(this);
 		
 		gestionEntradaCancelarEntradaJMenuItem = new JMenuItem("Cancelar Entradas");
 		cineJMenuEntrada.add(gestionEntradaCancelarEntradaJMenuItem);
@@ -173,6 +176,8 @@ public class Ventana extends JFrame implements ActionListener {
 		
 		gestionEntradaConsultarEntradaClienteJMenuItem = new JMenuItem("Consultar entrada cliente");
 		cineJMenuEntrada.add(gestionEntradaConsultarEntradaClienteJMenuItem);
+		gestionEntradaConsultarEntradaClienteJMenuItem.addActionListener(this);
+		
 		gestionEntradaCancelarMiEntradaJMenuItem = new JMenuItem("Cancelar mi entrada");
 		cineJMenuEntrada.add(gestionEntradaCancelarMiEntradaJMenuItem);
 
@@ -243,6 +248,14 @@ public class Ventana extends JFrame implements ActionListener {
 			System.out.println("HAS ELEGIDO CANCELAR ENTRADA");
 			CancelarEntradaVista cancelarEntradaVista= new CancelarEntradaVista();
 			setContentPane(cancelarEntradaVista);
+		}else if(e.getSource()==gestionEntradaMostrarEntradasFuncionJMenuItem) {
+			System.out.println("HAS ELEGIDO MOSTRAR ENTRADAS DE UNA FUNCION");
+			MostrarEntradasFuncionVista mostrarEntradasFuncionVista= new MostrarEntradasFuncionVista();
+			setContentPane(mostrarEntradasFuncionVista);
+		}else if(e.getSource()==gestionEntradaConsultarEntradaClienteJMenuItem) {
+			System.out.println("HAS ELEGIDO MOSTRAR ENTRADAS DE LOS CLIENTES");
+			ConsultarEntradasClientesVista consultarEntradasClientesVista = new ConsultarEntradasClientesVista();
+			setContentPane(consultarEntradasClientesVista);
 		}
 		
 		setVisible(true); // para refrescar

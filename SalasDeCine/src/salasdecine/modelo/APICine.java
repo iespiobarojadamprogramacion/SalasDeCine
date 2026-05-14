@@ -8,9 +8,9 @@ import salasdecine.utilidades.NotFoundClienteException;
 import salasdecine.utilidades.SalaOcupadaException;
 
 /**
- * AQUI VENDRAN TODOS LOS METODOS QUE NECESITO PARA CADA UNO DE LOS CASOS DE USO.
- * ESTE METODO ES PARA PODER COMUNICARNOS LOS CONTROLADORES CON LOS CASOS DE USO
- * EN TODOS LOS CONTROLADORES TENGO QUE IMPLEMENTAR EL API
+ * AQUI VENDRAN TODOS LOS METODOS QUE NECESITO PARA CADA UNO DE LOS CASOS DE
+ * USO. ESTE METODO ES PARA PODER COMUNICARNOS LOS CONTROLADORES CON LOS CASOS
+ * DE USO EN TODOS LOS CONTROLADORES TENGO QUE IMPLEMENTAR EL API
  */
 public class APICine {
 
@@ -24,6 +24,7 @@ public class APICine {
 
 	/**
 	 * CON ESTO SE IRAN CREANDO LAS APIS SI ES QUE NO LA HAY
+	 * 
 	 * @return
 	 */
 	public static APICine getInstance() {
@@ -35,6 +36,7 @@ public class APICine {
 
 	/**
 	 * METODO PARA REGISTRAR CLIENTE
+	 * 
 	 * @param nombre
 	 * @param email
 	 * @param fechaNacimiento
@@ -45,6 +47,7 @@ public class APICine {
 
 	/**
 	 * METODO CONSULTAR CLIENTE
+	 * 
 	 * @param idCliente
 	 * @return
 	 * @throws NotFoundClienteException
@@ -65,8 +68,10 @@ public class APICine {
 		}
 		return resultadoConsultaCliente;
 	}
+
 	/**
 	 * METODO PARA GUARDAR LA LISTA DE CLIENTES EN UN ARRAY BIDEMENSIONAL
+	 * 
 	 * @return
 	 */
 	public String[][] listaCliente() {
@@ -85,8 +90,10 @@ public class APICine {
 		}
 		return resultadoListaClientes;
 	}
+
 	/**
 	 * METODO PARA REGISTRAR UNA PELICULA
+	 * 
 	 * @param titulo
 	 * @param duracion
 	 * @param genero
@@ -95,9 +102,10 @@ public class APICine {
 	public void registrarPelicula(String titulo, int duracion, String genero, ClasificacionEdad clasificacionEdad) {
 		cine.registrarPelicula(titulo, duracion, genero, clasificacionEdad);
 	}
-	
+
 	/**
 	 * METODO PARA MOSTRAR TODAS LAS SALAS
+	 * 
 	 * @return
 	 */
 	public String[][] mostrarTodasLasSalas() {
@@ -120,6 +128,7 @@ public class APICine {
 
 	/**
 	 * MOSTRAR SALAS LIBRES
+	 * 
 	 * @return
 	 */
 	public String[][] salasLibres() {
@@ -154,6 +163,7 @@ public class APICine {
 
 	/**
 	 * MOSTRAR SALAS OCUPADAS, EL MISMO METODO DE ARRIBA PERO MODIFICANDO EL IF
+	 * 
 	 * @return
 	 */
 	public String[][] salasOcupadas() {
@@ -185,8 +195,10 @@ public class APICine {
 		}
 		return resultadoSalasOcupadas;
 	}
+
 	/**
 	 * METODO PARA QUE ME DEVUELVA UN STRING BIDEMENSIONAL DE LA LISTAPELICULAS
+	 * 
 	 * @return
 	 */
 	public String[][] listaPeliculas() {
@@ -206,7 +218,9 @@ public class APICine {
 	}
 
 	/**
-	 * METODO PARA USAR EN EL JCOMBOBOX PARA QUE ME DE LA CANTIDAD DE PELICULAS EN UN ARRAY DE STRING
+	 * METODO PARA USAR EN EL JCOMBOBOX PARA QUE ME DE LA CANTIDAD DE PELICULAS EN
+	 * UN ARRAY DE STRING
+	 * 
 	 * @return
 	 */
 	public String[] numerosDePeliculas() {
@@ -225,6 +239,7 @@ public class APICine {
 
 	/**
 	 * METODO PARA DAR DE ALTA FUNCION
+	 * 
 	 * @param fechaInicio
 	 * @param fechaFin
 	 * @param sala
@@ -243,6 +258,7 @@ public class APICine {
 
 	/**
 	 * METODO USADO PARA QUE ME RETOME LA PELICULA POR INDICE
+	 * 
 	 * @param indice
 	 * @return
 	 */
@@ -257,6 +273,7 @@ public class APICine {
 
 	/**
 	 * METODO USADO EN FUNCION, PORQUE TENIA EL NOMBRE DE LA SALA EN STRING
+	 * 
 	 * @param nombre
 	 * @return
 	 */
@@ -269,8 +286,11 @@ public class APICine {
 		}
 		return null;
 	}
+
 	/**
-	 * METODO PARA QUE ME DEVUELVA UN STRING BIDEMENSIONAL CON LAS LISTA DE LAS FUNCIONES
+	 * METODO PARA QUE ME DEVUELVA UN STRING BIDEMENSIONAL CON LAS LISTA DE LAS
+	 * FUNCIONES
+	 * 
 	 * @return
 	 */
 	public String[][] funcioneslista() {
@@ -281,7 +301,7 @@ public class APICine {
 		int filas = 0;
 		String[][] listafuncionesString = new String[listafunciones.size()][3];
 		for (Funcion f : listafunciones) {
-			listafuncionesString[filas][0]= String.valueOf(filas+1);
+			listafuncionesString[filas][0] = String.valueOf(filas + 1);
 			listafuncionesString[filas][1] = f.getPelicula().getTitulo();
 			listafuncionesString[filas][2] = f.getSala().getNombre();
 			filas++;
@@ -290,9 +310,10 @@ public class APICine {
 		return listafuncionesString;
 	}
 
-
 	/**
-	 * METODO PARA USAR EN EL JCOMBOBOX CON LAS FUNCIONES LISTA SE IRA ACTTUALIZANDO SEGUN LA CANTIDAD DE FUNCIONES
+	 * METODO PARA USAR EN EL JCOMBOBOX CON LAS FUNCIONES LISTA SE IRA ACTTUALIZANDO
+	 * SEGUN LA CANTIDAD DE FUNCIONES
+	 * 
 	 * @return
 	 */
 	public String[] numerosFuncionesLista() {
@@ -307,10 +328,14 @@ public class APICine {
 			fila++;
 		}
 		return letrasCantidadFunciones; // retorno en letras lo de 1, 2 , 3 .. etc
-		//LO QUE RETORNO ES UN STRING CON LA CANTIDAD DE FUNCIONES QUE HAY Y ESO LO DEVUELVO COMO STRING EN UN ARRAY 1, 2 ..3 ETC
+		// LO QUE RETORNO ES UN STRING CON LA CANTIDAD DE FUNCIONES QUE HAY Y ESO LO
+		// DEVUELVO COMO STRING EN UN ARRAY 1, 2 ..3 ETC
 	}
+
 	/**
-	 * FUNCION PARA QUE ME DEVUELVA UN STRING BIDEMENSIONAL CON LOS DATOS DEL CLIENTE
+	 * FUNCION PARA QUE ME DEVUELVA UN STRING BIDEMENSIONAL CON LOS DATOS DEL
+	 * CLIENTE
+	 * 
 	 * @return
 	 */
 	public String[][] entradaCliente() {
@@ -326,13 +351,13 @@ public class APICine {
 			flias2++;
 		}
 		return listaclientesString;
-		
-	}
 
+	}
 
 	/**
 	 * METODO PARA USAR EN EL JCOMBOBOX CON LAS FUNCIONES LISTA SE IRA ACTTUALIZANDO
 	 * SEGUN LA CANTIDAD DE CLIENTES
+	 * 
 	 * @return
 	 */
 	public String[] numerosClienteLista() {
@@ -347,24 +372,28 @@ public class APICine {
 			fila++;
 		}
 		return letrasCantidadClientes; // retorno en letras lo de 1, 2 , 3 .. etc
-		//LO QUE RETORNO ES UN STRING CON LA CANTIDAD DE CLIENTES QUE HAY Y ESO LO DEVUELVO COMO STRING EN UN ARRAY 1, 2 ..3 ETC
+		// LO QUE RETORNO ES UN STRING CON LA CANTIDAD DE CLIENTES QUE HAY Y ESO LO
+		// DEVUELVO COMO STRING EN UN ARRAY 1, 2 ..3 ETC
 	}
-	
+
 	/**
 	 * FUNCION PARA SACAR LA FUNCION DEL INDICE DE JCOMBOBOX
+	 * 
 	 * @param indice
 	 * @return
 	 */
 	public Funcion getFuncionPorIndiceLista(int indice) {
-		List<Funcion> listasFunciones = cine.getFunciones(); //TENGO LAS FUNCIONES
-		if(indice<0 || indice>=listasFunciones.size()) {
+		List<Funcion> listasFunciones = cine.getFunciones(); // TENGO LAS FUNCIONES
+		if (indice < 0 || indice >= listasFunciones.size()) {
 			return null;
 		}
 		return listasFunciones.get(indice);
-		
+
 	}
+
 	/**
 	 * METODO PARA VENDER UNA ENTRADA A UN USUARIO REGISTRADO
+	 * 
 	 * @param idFuncion
 	 * @param idCliente
 	 * @param fila
@@ -372,12 +401,14 @@ public class APICine {
 	 * @param hora
 	 * @param metodoPago
 	 */
-	public void venderEntrada(int idFuncion, int idCliente, int fila, int columna, String hora, MetodoDePago metodoPago) {	
+	public void venderEntrada(int idFuncion, int idCliente, int fila, int columna, String hora,
+			MetodoDePago metodoPago) {
 		cine.venderEntrada(idFuncion, idCliente, fila, columna, hora, metodoPago);
 	}
-	
+
 	/**
 	 * METODO PARA AGREGAR ENTRADA SIN UN USUARIO REGISTRADO, RETORNA UN BOOLEAN
+	 * 
 	 * @param fila
 	 * @param columna
 	 * @param hora
@@ -385,10 +416,92 @@ public class APICine {
 	 * @return
 	 */
 	public boolean agregarEntradaAFuncion(int fila, int columna, String hora, Funcion funcionElegida) {
-		return cine.agregarEntrada(fila, columna, hora, funcionElegida); //retorna true o false dependiendo del metodo del gestorcine
+		return cine.agregarEntrada(fila, columna, hora, funcionElegida); // retorna true o false dependiendo del metodo
+																			// del gestorcine
 	}
+
+	/**
+	 * METODO PARA CANCELAR ENTRADA
+	 * 
+	 * @param idFuncion
+	 * @param fila
+	 * @param columna
+	 * @param hora
+	 * @return
+	 */
 	public boolean cancelarEntrada(int idFuncion, int fila, int columna, String hora) {
 		return cine.cancelarEntrada(idFuncion, fila, columna, hora);
 	}
-}
 
+	/**
+	 * METODO QUE A TRAVES DE UNA FUNCION CREO UNA LISTA DE ENTRADAS DE ESA FUNCION
+	 * GUARDO ESA LISTA EN UN STRING BIDEMENSIONAL EN LA QUE GUARDARA LA PELICULA,
+	 * NOMBRE DE LA SALA, HORARIO, ASIENTOS, CLIENTE Y PRECIO
+	 * 
+	 * @param funcion
+	 * @return
+	 */
+	public String[][] entradasPorFuncion(Funcion funcion) {
+		List<Entrada> entradas = funcion.getEntradas();
+		if (entradas.size() == 0) {
+			throw new NullPointerException();
+		}
+		String[][] entradasPorFuncion = new String[entradas.size()][6];
+		int fila = 0;
+		for (Entrada e : entradas) {
+			entradasPorFuncion[fila][0] = e.getFuncion().getPelicula().getTitulo();
+			entradasPorFuncion[fila][1] = e.getFuncion().getSala().getNombre();
+			entradasPorFuncion[fila][2] = e.getHora();
+			entradasPorFuncion[fila][3] = "Fila: " + (e.getFila() + 1) + "Columna: " + (e.getColumna() + 1);
+			if (e.getCliente() != null) {
+				entradasPorFuncion[fila][4] = e.getCliente().getNombre();
+			} else {
+				entradasPorFuncion[fila][4] = "SIN ASIGNAR";
+			}
+			entradasPorFuncion[fila][5] = String.valueOf(e.getPrecio());
+			fila++;
+
+		}
+		return entradasPorFuncion;
+	}
+
+	/**
+	 * METODO QUE CREAR EL ARRAY LIST CLIENTE Y LUEGO CON ESE CLIENTE COMPRUEBA LAS ENTRADAS QUE TIENE Y LAS VA GUARDANDO
+	 * @param indiceCliente
+	 * @return
+	 */
+	public String[][] consultarEntradasCliente(int indiceCliente) {
+		List<Cliente> clientes = cine.getClientes();//TENGO TODOS LOS CLIENTES
+		
+		if (indiceCliente < 0 || indiceCliente >= clientes.size()) {
+			return null;
+		}
+		//SELECCIONO EL CLIENTE EN CUESTION CON SU ID
+		Cliente cliente = clientes.get(indiceCliente);
+		//CREO LA LISTA DE ENTRADAS
+		List<Entrada> entradasCliente = new ArrayList<>();
+		//AÑADO TODOS LAS ENTRADAS QUE TIENEN ESE ID DE CLIENTE
+		for (Funcion f : cine.getFunciones()) {
+			entradasCliente.addAll(f.listaEntradasClientes(cliente.getId_Cliente()));
+		}
+		//SI ESTA VACIA MANDO EXCEPCION
+		if (entradasCliente.size() == 0) {
+			throw new NullPointerException();
+		}
+		//CREO EL STRING QUE TENDRA LA LISTA DE ENTRADAS DE ESE CLIENTE
+		String[][] resultado = new String[entradasCliente.size()][6];
+
+		for (int i = 0; i < entradasCliente.size(); i++) {
+			Entrada e = entradasCliente.get(i);
+			resultado[i][0] = e.getFuncion().getPelicula().getTitulo();
+			resultado[i][1] = e.getFuncion().getSala().getNombre();
+			resultado[i][2] = e.getHora();
+			resultado[i][3] = "Fila " + (e.getFila() + 1) + " Columna " + (e.getColumna() + 1);
+			resultado[i][4] = e.getCliente().getNombre();
+			resultado[i][5] = String.valueOf(e.getPrecio());
+		}
+		
+		return resultado;
+	}
+
+}
