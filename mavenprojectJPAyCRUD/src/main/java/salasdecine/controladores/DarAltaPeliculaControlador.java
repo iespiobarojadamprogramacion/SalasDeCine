@@ -1,0 +1,44 @@
+package salasdecine.controladores;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import salasdecine.modelo.APICine;
+import salasdecine.modelo.ClasificacionEdad;
+import salasdecine.vistas.DarAltaPeliculaVista;
+
+public class DarAltaPeliculaControlador implements ActionListener {
+	private DarAltaPeliculaVista vista;
+	private APICine api= APICine.getInstance(); //<-- TODOS LOS CONTROLADORES TIENEN QUE TENERLO
+	public DarAltaPeliculaControlador( DarAltaPeliculaVista vista) {
+		this.vista=vista;
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		System.out.println("Dar de alta pelicula");
+		String Titulo=vista.getTitulo();
+		String Duraccion=vista.getDuraccion();
+		String genero=vista.getgenero();
+		String clasificacion=vista.getClasificacion();
+		try {
+			int duraccion=Integer.parseInt(Duraccion);
+			System.out.println(Titulo+" "+duraccion+" "+genero+" "+clasificacion);
+			
+			/*USABAMOS PARA REGISTRARLO CON DATOS DE ECLIPSE, SI PAUSABAMOS E INICIABAMOS ESOS DATOS SE BORRABAN
+			api.registrarPelicula(Titulo, duraccion, genero, ClasificacionEdad.valueOf(clasificacion));
+			*/
+			
+			//AHORA USAREMOS EL NUEVO DE JDBC QUE SON DATOS PERSISTENTE GUARDADOS EN UNA BBDD
+			api.registrarPeliculaJDBC(Titulo, duraccion, genero, ClasificacionEdad.valueOf(clasificacion));		
+			
+			vista.respuestaOK("¡Pelicula Registrada!");
+			System.out.println();
+		}catch(NumberFormatException enf) {
+			System.out.println("No has introducido un numero valido");
+			vista.setError("Has introducido valor no numerico");
+		}
+		
+		
+	}
+
+}
